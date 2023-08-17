@@ -2,7 +2,8 @@ body {
     margin: 0;
     padding: 0;
 
-    background: rgb(70, 70, 70);
+    background: rgb(47,69,80);
+    background: linear-gradient(90deg, rgba(47,69,80,1) 9%, rgba(88,111,124,1) 32%, rgba(184,219,217,1) 100%);
 }
 
 .container {
@@ -28,11 +29,55 @@ body {
 
 .dashboard {
     width: 980px;
-    height: 150px;
+    height: 200px;
     background: white;
     box-sizing: border-box;
     border-radius: 10px;
     border: 1px solid blue;
+
+    display: flex;
+    
+}
+.receita-desp {
+    flex: 4;
+    
+    font-size: 23px;
+    margin-left: 40px;
+}
+
+
+.container-rc {
+    display: flex;
+
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.valores {
+    width: 150px;
+    height: 70px;
+    background-color: aqua;
+    border-radius: 5px;
+    font-size: 23px;
+    margin-left: 15px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.valores p {
+    margin: 0;
+}
+.valores h2 {
+    line-height: 15px;
+    font-size: 10px;
+}
+
+
+.buttons {
+    flex: 3;
+}
+.saldo {
+    flex: 4;
 }
 
 .Listas {
@@ -52,7 +97,7 @@ body {
 
     border-radius: 20px;
 }
-.Receita {
+.Receitas {
     width: 490px;
     height: 600px;
     background-color: white; 
