@@ -6,14 +6,16 @@
     <title>Homepage</title>
 
     <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/modal.css">
+    <script src="../Controller/openModal.js"></script>
+
 </head>
 <body>
     <div class="container">
         <div id="auxiliar"> <a href="">Home</a> <a href="">Perfil</a> <a href="">Relátorio</a></div>
         <div class="dashboard">
-           
                 <p>Boa tarde,
-                    João Vitor
+                    Usuário
                 </p>
                 <div class="despesa">
                     R$ 200
@@ -22,14 +24,80 @@
                     R$ 832
                 </div>
                 <div class="saldo">
-                    R$ 23.000
+                    Saldo: R$0.00
                 </div>
-                <button> Despesa</button>
-                < button> Receita</button>
-          
-    </div>
+                <button id="botaoDespesa"> Despesa</button> 
+                <button id="botaoReceita"> Receita</button>
+                
+            
+                
+                    <dialog class="modal" id="modalDesp" > 
+                        <h2> Inserir despesas</h2>
+                        <hr>
+                        <label for="valor">Valor R$:</label>
+                        <input type="text" name="valor" id="valorDesp">
+                        <br><br>
+                        <label for="date"></label>
+                        <input type="date" name="date" id="dataDesp">
+                        <br><br>
+                        <label for="desc">Descrição: </label>
+                        <input type="text" name="desc" id="descDesp">
+                        <br>
+                        <br>
+                        <div>
+                            <button id="btnSalvar" >SALVAR DESPESA</button>
+                            <button id="btnClose_Desp" >FECHAR</button>
+                        </div>
+                    </dialog>
+
+                    <dialog class="modal" id="modalRece" > 
+                        <h2> Inserir Receita</h2>
+                        <hr>
+                        <label for="valor">Valor R$:</label>
+                        <input type="text" name="valor" id="valorRece">
+                        <br><br>
+                        <label for="date"></label>
+                        <input type="date" name="date" id="dataRece">
+                        <br><br>
+                        <label for="desc">Descrição: </label>
+                        <input type="text" name="desc" id="descRece">
+                        <br>
+                        <br>
+                        <div>
+                            <button id="btnSalvar" >SALVAR RECEITA</button>
+                            <button id="btnClose_Rece" >FECHAR</button>
+                        </div>
+                    </dialog>
+
+                    <script src="../Controller/openModal.js"></script>
+                    
+
+             
+        
+
+
+
+
+                
+        </div>
+
+        <div class="Listas"> 
+            <div class="Despesas">
+                
+
+
+            </div>
+            <div class="Receita">
+                
+            </div>
+        </div>
+       
     
 
     </div>
+
+    <footer>    
+        Feito por: João Vitor Rodrigues Santos
+    </footer>
 </body>
 </html>

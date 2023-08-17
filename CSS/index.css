@@ -27,10 +27,47 @@ body {
 }
 
 .dashboard {
-    width: 800px;
+    width: 980px;
     height: 150px;
     background: white;
-
+    box-sizing: border-box;
     border-radius: 10px;
     border: 1px solid blue;
+}
+
+.Listas {
+    margin-top: 20px;
+    width: 980px;
+
+    display: flex;
+    
+    
+
+}
+
+.Despesas {
+    width: 490px;
+    height: 600px;
+    background-color: white;
+
+    border-radius: 20px;
+}
+.Receita {
+    width: 490px;
+    height: 600px;
+    background-color: white; 
+    margin-left: 20px;
+
+    border-radius: 20px;
+}
+
+footer {
+    height: 10vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
