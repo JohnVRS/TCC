@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="../CSS/index.css">
     <link rel="stylesheet" href="../CSS/modal.css">
-    <script src="../Controller/openModal.js"></script>
+    
 
 </head>
 <body>
@@ -17,7 +17,7 @@
                 <div class="receita-desp">
 
                     <div class="congrats">
-                            <p> <span style="font-size: 18px;color: rgb(82, 82, 82);">Boa tarde,</span><br>
+                            <p> <small style="font-size: 18px;color: rgb(82, 82, 82);">Boa tarde,</small><br>
                                                     João Vitor Rodrigues!
                             </p>
 
@@ -26,12 +26,12 @@
                         <div class="valores">
                             <p>Despesas
                             </p>
-                            <p>R$ 0.00</p>
+                            <p id="despesas-Global">R$ 0.00</p>
                         </div>
                         <div class="valores">
                             <p>Receitas
                             </p>
-                            <p>R$ 0.00</p>
+                            <p id="receitas-Global">R$+ 0.00</p>
                         </div>
                     </div>
                     
@@ -40,12 +40,12 @@
 
                 <div class="saldo">
                     <p>Saldo geral</p>
-                    <p>R$ 0.00</p> 
+                    <p id="saldo-Global">R$ 0.00</p> 
                 </div>
 
                 <div class="buttons">   
-                    <button> <img src="../src/minus.png" alt=""> Despesa</button> 
-                    <button> <img src="../src/plus.png" alt="">Receita</button>
+                    <button id="botaoDespesa"> <img src="../src/minus.png" alt="">Despesa</button> 
+                    <button id="botaoReceita"> <img src="../src/plus.png" alt="">Receita</button>
                 </div>
                 
                 
@@ -65,7 +65,7 @@
                         <br>
                         <br>
                         <div>
-                            <button id="btnSalvar" >SALVAR DESPESA</button>
+                            <button id="salvarD" >SALVAR DESPESA</button>
                             <button id="btnClose_Desp" >FECHAR</button>
                         </div>
                     </dialog>
@@ -84,17 +84,17 @@
                         <br>
                         <br>
                         <div>
-                            <button id="btnSalvar" >SALVAR RECEITA</button>
+                            <button id="salvarR">SALVAR RECEITA</button>
                             <button id="btnClose_Rece" >FECHAR</button>
                         </div>
                     </dialog>
 
-                    <script src="../Controller/openModal.js"></script>
                     
+                   
 
              
         
-
+                    <script src="../Controller/openModal.js"></script>
 
 
 
@@ -103,7 +103,18 @@
 
         <div class="Listas"> 
             <div class="Despesas">
-                
+                <table>
+                    <tr> <td>Editar</td><td>Valor</td><td>Descrição</td><td>Data</td> </tr>
+                    <tr> <td> <button>edit</button></td> <td>R$2000</td> <td>Cartão de Crédito</td> <td>20/09/2023</td></tr>
+                    <tr> <td> <button>edit</button></td> <td>R$2000</td> <td>Cartão de Crédito</td> <td>20/09/2023</td></tr>
+                    <tr> <td> <button>edit</button></td> <td>R$2000</td> <td>Cartão de Crédito</td> <td>20/09/2023</td></tr>
+                    <tr> <td> <button>edit</button></td> <td>R$2000</td> <td>Cartão de Crédito</td> <td>20/09/2023</td></tr>
+                    <tr> <td> <button>edit</button></td> <td>R$2000</td> <td>Cartão de Crédito</td> <td>20/09/2023</td></tr>
+                    <tr> <td> <button>edit</button></td> <td>R$2000</td> <td>Cartão de Crédito</td> <td>20/09/2023</td></tr>
+                    <tr> <td> <button>edit</button></td> <td>R$2000</td> <td>Cartão de Crédito</td> <td>20/09/2023</td></tr>
+                    <tr> <td> <button>edit</button></td> <td>R$2000</td> <td>Cartão de Crédito</td> <td>20/09/2023</td></tr>
+                    
+                </table>
 
 
             </div>

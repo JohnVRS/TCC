@@ -30,10 +30,10 @@ body {
 .dashboard {
     width: 980px;
     height: 200px;
-    background: white;
+    background: rgb(255, 255, 255);
     box-sizing: border-box;
-    border-radius: 10px;
-    border: 1px solid blue;
+    border-radius: 7px;
+    border: 1px solid rgb(0, 0, 0);
 
     display: flex;
     
@@ -84,6 +84,7 @@ body {
     border-radius: 5px;
     font-size: 23px;
     margin: 20px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -133,6 +134,13 @@ body {
     
 }
 
+table td {
+    padding-left: 40px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    border: 1px solid black;
+    text-align: ;
+}
 
 .Listas {
     margin-top: 20px;
@@ -149,7 +157,9 @@ body {
     height: 600px;
     background-color: white;
 
-    border-radius: 20px;
+    border-radius: 7px;
+
+    overflow: auto;
 }
 .Receitas {
     width: 490px;
@@ -157,7 +167,8 @@ body {
     background-color: white; 
     margin-left: 20px;
 
-    border-radius: 20px;
+    border-radius: 7px;
+    overflow: auto;
 }
 
 footer {
