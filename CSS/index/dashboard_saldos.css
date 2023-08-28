@@ -1,41 +1,36 @@
-body {
-    margin: 0;
-    padding: 0;
-
-    background: rgb(47,69,80);
-    background: linear-gradient(90deg, rgba(47,69,80,1) 9%, rgba(88,111,124,1) 32%, rgba(184,219,217,1) 100%);
-}
-
-.container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 #auxiliar {
     padding-left: 10px;
-    width: 200px;
+    width: 450px;
     height: 30px;
-    background-color: white;
+    background-color: rgb(36, 35, 35);
+    text-decoration: none;
+   
+    display: flex; 
     text-align: center;
-    gap: 30px;
-    display: flex;
+    justify-content: space-between;
+
     border-radius: 10px;
+
+
+    padding: 7px 20px 0px 20px;
     margin-top: 20px;
     margin-bottom: 10px;
+    box-shadow: 2px 2px 5px  rgba(0, 0, 0,0.7);
 }
 
 .dashboard {
     width: 980px;
     height: 200px;
-    background: rgb(255, 255, 255);
+    background: rgb(36, 35, 35);
     box-sizing: border-box;
     border-radius: 7px;
-    border: 1px solid rgb(0, 0, 0);
+    
+    color: white;
 
     display: flex;
+    
+    box-shadow: 4px 4px 5px  rgba(0, 0, 0,0.7);
+    
     
 }
 .receita-desp {
@@ -55,14 +50,16 @@ body {
 .valores {
     width: 150px;
     height: 70px;
-    background-color: aqua;
+    background-color: rgba(3, 78, 41, 0.452);
     border-radius: 5px;
-    font-size: 23px;
+    font-size: 17px;
     margin-left: 15px ;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    box-shadow: 2px 2px black;
 }
 .valores p {
     margin: 0;
@@ -80,7 +77,7 @@ body {
     flex: 4;
     width: 50px;
     height: 130px;
-    background-color: rgb(129, 133, 133);
+    background-color: rgba(129, 133, 133,0.1);
     border-radius: 5px;
     font-size: 23px;
     margin: 20px;
@@ -107,6 +104,8 @@ body {
     gap: 30px;
 
     
+
+    
 }
 .buttons button:first-of-type {
     display: flex;
@@ -115,7 +114,7 @@ body {
     width: 80px;
     height: 120px;
 
-    border-radius: 10px;
+    border-radius: 7px;
 }
 .buttons button {
     display: flex;
@@ -125,59 +124,16 @@ body {
     gap: 15px;
     width: 80px;
     height: 120px;
-    border-radius: 10px;
+    border-radius: 7px;
+
+    background: rgba(129, 133, 133,0.1);
+    color: rgb(145, 145, 145);
+
+    border: none;
 }
 
 
 .buttons img {
     width: 40px;
     
-}
-
-table td {
-    padding-left: 40px;
-    padding-bottom: 30px;
-    padding-top: 20px;
-    border: 1px solid black;
-    
-}
-
-.Listas {
-    margin-top: 20px;
-    width: 980px;
-
-    display: flex;
-    
-    
-
-}
-
-.Despesas {
-    width: 490px;
-    height: 600px;
-    background-color: white;
-
-    border-radius: 7px;
-
-    overflow: auto;
-}
-.Receitas {
-    width: 490px;
-    height: 600px;
-    background-color: white; 
-    margin-left: 20px;
-
-    border-radius: 7px;
-    overflow: auto;
-}
-
-footer {
-    height: 10vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    color: white;
 }

@@ -1,0 +1,38 @@
+
+table td {
+    padding-left: 40px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    border: 1px solid black;
+    
+}
+
+.Listas {
+    margin-top: 20px;
+    width: 980px;
+
+    display: flex;
+
+
+}
+.Despesas {
+    width: 490px;
+    height: 600px;
+    background-color: rgb(36, 35, 35);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0,0.7);
+
+    border-radius: 7px;
+    padding: 20px;
+    overflow: auto;
+}
+.Receitas {
+    width: 490px;
+    height: 600px;
+    background-color: rgb(36, 35, 35); 
+    margin-left: 20px;
+    box-shadow: 3px 3px 5px  rgba(0, 0, 0,0.7);
+
+    padding: 20px;
+    border-radius: 7px;
+    overflow: auto;
+}

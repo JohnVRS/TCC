@@ -39,11 +39,11 @@ let saldoGeral = 0;
 let receita = 0;
 let despesa = 0;
 
-var tableD = document.getElementById('tabela_despesas');
+
 
  
 
-function adicionaLinha(idTable, valor, descri, datas) {
+function adicionaLinha(valor, descri, datas) {
 
   var tabela = document.getElementById('tabela_despesas');
   var numLinhas = tabela.rows.length;
@@ -54,7 +54,7 @@ function adicionaLinha(idTable, valor, descri, datas) {
   var data = linha.insertCell(3);
 
   buttons.innerHTML = "<button onclick='removeLinha(this)'>Remover</button>";
-  despesa.innerHTML = "R$" + valor.value;
+  despesa.innerHTML = "R$" + valor;
   desc.innerHTML = descri.value;
   data.innerHTML = datas.value;
 
@@ -89,13 +89,12 @@ salvarR.addEventListener("click", function() {
 });
 
 salvarD.addEventListener("click", function() {
-        
-    console.log("Funciona");
+    
+  
     const novaDespesa = parseFloat(valorDespInput.value);
       console.log(novaDespesa)
       if (!isNaN(novaDespesa)) {
         saldoGeral -= novaDespesa;
-        console.log(despesasIP)
         despesa += novaDespesa;
         despesasIP.textContent = `R$- ${despesa.toFixed(2)}`;
         saldoGeralP.textContent = `R$ ${saldoGeral.toFixed(2)}`;
@@ -103,7 +102,7 @@ salvarD.addEventListener("click", function() {
         modalDesp.close();
       }
 
-      adicionaLinha(tableD,valorDespInput,descDesp,dataDesp);
+      adicionaLinha(novaDespesa,descDesp,dataDesp);
     
 });
 
