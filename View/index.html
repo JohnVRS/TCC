@@ -17,15 +17,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div id="auxiliar"> <a href="">Home</a> <a href="">Perfil</a> <a href="">Relátorio</a></div>
     <div class="container">
         <div id="logo">
-            <img src="../src/wallet.png" alt="">
-            <img src="../src/wallet.png" alt="">
-            <img src="../src/wallet.png" alt="">
-            <img src="../src/wallet.png" alt="">
+            
         </div>
         
         <div class="dashboard">
@@ -52,7 +53,6 @@
                     
                 </div>
                 
-
                 <div class="saldo">
                     <p>Saldo geral</p>
                     <p id="saldo-Global">R$ 0.00</p> 
@@ -62,63 +62,49 @@
                     <button id="botaoDespesa"> <img src="../src/minus.png" alt="">Despesa</button> 
                     <button id="botaoReceita"> <img src="../src/plus.png" alt="">Receita</button>
                 </div>
-                
-                
             
-                
                     <dialog class="modal" id="modalDesp" > 
-                        <h2> Inserir despesas</h2>
+                        <h2> Inserir despesa</h2>
                         <hr>
-                        <label for="valor">Valor R$:</label>
-                        <input type="text" name="valor" id="valorDesp">
-                        <br><br>
-                        <label for="date"></label>
+                        <div class="coolinput">
+                            <label for="input" class="text">Valor R$:</label>
+                            <input type="text" name="input" id="valorDesp" class="input">
+                        </div>
+                        <div class="coolinput">
+                            <label for="desc" class="text">Descrição: </label>
+                            <input type="text" name="desc" id="descDesp" class="input">
+                        </div>
                         <input type="date" name="date" id="dataDesp">
-                        <br><br>
-                        <label for="desc">Descrição: </label>
-                        <input type="text" name="desc" id="descDesp">
                         <br>
                         <br>
-                        <div>
-                            <button id="salvarD" >SALVAR DESPESA</button>
-                            <button id="btnClose_Desp" >FECHAR</button>
+                        <div class="styleButtonsContainer">
+                            <button class="styleButtons" id="salvarD" ><span>SALVAR</span></button>
+                            <button class="styleButtons" id="btnClose_Desp" ><span>FECHAR</span></button>
                         </div>
                     </dialog>
-
+                    
                     <dialog class="modal" id="modalRece" > 
                         <h2> Inserir Receita</h2>
                         <hr>
-                        <label for="valor">Valor R$:</label>
-                        <input type="text" name="valor" id="valorRece">
-                        <br><br>
-                        <label for="date"></label>
-                        <input type="date" name="date" id="dataRece">
-                        <br><br>
-                        <label for="desc">Descrição: </label>
-                        <input type="text" name="desc" id="descRece">
+                        <div class="coolinput">
+                            <label for="input" class="text">Valor R$:</label>
+                            <input type="text" name="input" id="valorRece" class="input">
+                        </div>
+                        <div class="coolinput">
+                            <label for="desc" class="text">Descrição: </label>
+                            <input type="text" name="desc" id="descRece" class="input">
+                        </div>
+                         <input type="date" name="date" id="dataRece">
                         <br>
                         <br>
-                        <div>
-                            <button id="salvarR">SALVAR RECEITA</button>
-                            <button id="btnClose_Rece" >FECHAR</button>
+                        <div class="styleButtonsContainer">
+                            <button class="styleButtons" id="salvarR"><span>SALVAR</span></button>
+                            <button class="styleButtons" id="btnClose_Rece" ><span>FECHAR</span></button>
                         </div>
                     </dialog>
-
-                    
-                   
-
-             
-        
-                    <script src="../Controller/openModal.js"></script>
-
-
-
-                
-        </div>
-        
-       
-       
-    
+        </div>  
+        <script src="../Controller/openModal.js"></script>
+    </div>
 
     </div>
     <div class="Listas"> 

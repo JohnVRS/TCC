@@ -4,7 +4,6 @@ var modalDesp = document.getElementById('modalDesp');
 var btnClose_Desp = document.getElementById('btnClose_Desp');
 var btnClole_Rece = document.getElementById('btnClose_Rece');
 
-
 let receitasIP = document.getElementById("receitas-Global");
 let despesasIP = document.getElementById("despesas-Global");
 const saldoGeralP = document.getElementById("saldo-Global");
@@ -14,12 +13,10 @@ const valorReceInput = document.getElementById("valorRece");
 const dataRece = document.getElementById("dataRece");
 const descRece = document.getElementById("descRece");
 
-
 const salvarD = document.getElementById("salvarD");
 const valorDespInput = document.getElementById("valorDesp");
 const dataDesp = document.getElementById("dataDesp");
 const descDesp = document.getElementById("descDesp");
-
 
 btnDesp.addEventListener("click", function() {
     modalDesp.showModal();
@@ -39,9 +36,6 @@ let saldoGeral = 0;
 let receita = 0;
 let despesa = 0;
 
-
-
- 
 
 function adicionaLinha(valor, descri, datas) {
 
@@ -70,7 +64,6 @@ function removeLinha(linha) {
 
 salvarR.addEventListener("click", function() {
 
-    console.log("Funciona");
     const novaReceita = parseFloat(valorReceInput.value);
       console.log(novaReceita)
       if (!isNaN(novaReceita)) {
@@ -79,9 +72,6 @@ salvarR.addEventListener("click", function() {
         receitasIP.textContent = `R$+ ${receita.toFixed(2)}`;
         saldoGeralP.textContent = `R$ ${saldoGeral.toFixed(2)}`;
         valorReceInput.value = "";
-
-        
-
         modalRece.close();
       }
 

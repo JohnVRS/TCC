@@ -18,6 +18,11 @@ body {
     
 }
 
+button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
 .container {
     width: 1280px;
     
@@ -43,3 +48,4 @@ footer {
     justify-content: center;
     color: white;
 }
+
