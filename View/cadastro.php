@@ -1,3 +1,8 @@
+<?php
+    require_once("../Model/Connection.class.php");
+    require_once("../Model/Usuario.class.php");
+    require_once("../Controller/UsuarioDAO.class.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +14,7 @@
 </head>
 <body>
     <div class="tela-cadastro">
-        <form action="">
+        <form action="cadastro.php" method="POST">
             <fieldset>
                 <legend><strong>Cadastro</strong></legend>
                 <br>
@@ -49,9 +54,30 @@
                     <label for="estado" class="labelInput">Estado</label>
                 </div>
                 <br><br>
-                <input type="submit" value="Enviar" id="button">
+                <input type="submit"  name="submit" value="Enviar" id="button">
 
             </fieldset>
+                <?php 
+                    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                        $usuario = new Usuario();
+
+                        $usuario->setNome($_POST['nome']);
+                        $usuario->setTele($_POST['telefone']);
+                        $usuario->setNasc($_POST['data_nasc']);
+                        $usuario->setEstado($_POST['estado']);
+                        $usuario->setSexo($_POST['genero']);
+                        $usuario->setEmail($_POST['email']);
+
+                        $DAO = new UsuarioDAO();
+                        $DAO->cadastrar($usuario);
+                    }
+                
+                
+                ?>
+
+
+
+
         </form>
     </div>
 
