@@ -1,7 +1,7 @@
 <?php
     require_once("../Model/Connection.class.php");
     require_once("../Model/Usuario.class.php");
-    require_once("../Controller/UsuarioDAO.class.php")
+    require_once("../Controller/UsuarioDAO.class.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +29,11 @@
                 </div>
                 <br><br>
                 <div class="inputBox">
+                    <input type="password" name="senha" id="senha" class="inputUser" required>
+                    <label for="senha" class="labelInput">Senha</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
                     <input type="tel" name="telefone" id="telefone" class="inputUser" required>
                     <label for="telefone" class="labelInput">Telefone</label>
                 </div>
@@ -49,11 +54,6 @@
                 
 
                 <br><br>
-                <div class="inputBox">
-                    <input type="text" name="estado" id="estado" class="inputUser" required>
-                    <label for="estado" class="labelInput">Estado</label>
-                </div>
-                <br><br>
                 <input type="submit"  name="submit" value="Enviar" id="button">
 
             </fieldset>
@@ -64,20 +64,14 @@
                         $usuario->setNome($_POST['nome']);
                         $usuario->setTele($_POST['telefone']);
                         $usuario->setNasc($_POST['data_nasc']);
-                        $usuario->setEstado($_POST['estado']);
                         $usuario->setSexo($_POST['genero']);
                         $usuario->setEmail($_POST['email']);
+                        $usuario->setSenha($_POST['senha']);
 
                         $DAO = new UsuarioDAO();
                         $DAO->cadastrar($usuario);
                     }
-                
-                
                 ?>
-
-
-
-
         </form>
     </div>
 

@@ -8,6 +8,7 @@
         private $nasc;
         private $estado;
         private $email;
+        private $senha;
 
         public function setCod($cod) {
             $this->cod = $cod;
@@ -24,14 +25,15 @@
         public function setNasc($nasc){
             $this->nasc = $nasc;
         }
-        public function setEstado($estado){
-            $this->estado = $estado;
-        }
         public function setEmail($email){
             $this->email = $email;
         }
+        public function setSenha($senha){
+            $this->senha = $senha;
+        }
 
 
+        
         public function getCod(){
             return $this->cod;
         }
@@ -47,13 +49,12 @@
         public function getNasc(){
             return $this->nasc;
         }
-        public function getEstado(){
-            return $this->estado;
-        }
         public function getEmail(){
             return $this->email;
         }
-        
+        public function getSenha(){
+            return $this->senha;
+        }
     }
 
 ?>

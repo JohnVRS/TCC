@@ -25,7 +25,7 @@ body {
     font-size: 15px;
 }
 
-.tela-login button {
+.tela-login .buttonSubmit {
     background-color: rgb(30, 255, 169);
     border: none;
     padding: 15px;
@@ -35,6 +35,6 @@ body {
     cursor: pointer;
 }
 
-.tela-login button:hover {
+.tela-login .buttonSubmit:hover {
     background-color: rgba(0, 255, 157, 0.767);
 }

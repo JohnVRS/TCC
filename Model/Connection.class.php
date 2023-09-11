@@ -3,8 +3,6 @@
         public static $instance;
 
 
-        
-
         public static function getInstance(){
             try{
                 self::$instance = new PDO('mysql:host=localhost;dbname=tcc','root','');
