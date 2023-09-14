@@ -1,3 +1,22 @@
+<?php 
+    require_once("../Model/Usuario.class.php");
+    require_once("../Controller/UsuarioDAO.class.php");
+    require_once("../Model/Connection.class.php");
+    session_start();
+    
+    if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true )){
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        header("Location: login.php");
+    } else {
+        $usuario = new Usuario();
+
+        $logado = $usuario->getNome();
+    }
+    
+    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +42,7 @@
 
 </head>
 <body>
-    <div id="auxiliar"> <a href="">Home</a> <a href="">Perfil</a> <a href="">Relátorio</a></div>
+    <div id="auxiliar"> <a href="">Home</a> <a href="">Perfil</a> <a href="sair.php">Sair</a></div>
     <div class="container">
         <div id="logo">
             
@@ -34,7 +53,7 @@
 
                     <div class="congrats">
                             <p> <small style="font-size: 18px;color: rgb(82, 82, 82);">Boa tarde,</small><br>
-                                                    João Vitor Rodrigues!
+                                                    <?php echo"<u>$logado</u>" ?>
                             </p>
 
                     </div>

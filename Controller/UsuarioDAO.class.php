@@ -20,6 +20,11 @@
             }
         }
 
+        public function puxarDados($email) {
+            $sql = "INSERT INTO usuario(nome,tel,sexo,nasc,email,senha) 
+                        VALUES(:nome,:tel,:sexo,:nasc,:email,:senha)";
+            $p_sql = Connection::getInstance()->prepare($sql);
+        }
         
     }
     

@@ -3,6 +3,8 @@
     require_once("../Controller/UsuarioDAO.class.php");
     require_once("../Model/Connection.class.php");
 
+    session_start();
+
     if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])){
         
         $email = $_POST['email'];
@@ -20,9 +22,16 @@
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (count($result) > 0) {
-            header('Location: index.html');
+            $_SESSION['email'] = $email;
+            $_SESSION['senha'] = $senha;
+
+
+            header('Location: sistema.php');
             echo "Usuário encontrado!";
         } else {
+            unset($_SESSION['email']);
+            unset($_SESSION['senha']);
+
             header('Location: login.php');
             echo "Nenhum usuário encontrado.";
         }

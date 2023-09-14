@@ -11,7 +11,7 @@
 <body>
         <div class="tela-login">
             <h1>Login</h1>
-            <form action="testLogin.php" method="POST">
+            <form action="execLogin.php" method="POST">
                 <input type="text" name="email" placeholder="Email">
                 <br><br>
                 <input type="password" name="senha" placeholder="Senha">
