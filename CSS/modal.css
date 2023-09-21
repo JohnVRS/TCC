@@ -124,27 +124,27 @@ dialog .styleButtonsContainer {
    }
    
    .styleButtons:hover::after {
-    right: auto;
-    left: 0;
-    width: 100%;
+      right: auto;
+      left: 0;
+      width: 100%;
    }
    
    .styleButtons span {
-    text-align: center;
-    text-decoration: none;
-    width: 100%;
-    padding: 18px 25px;
-    color: #fff;
-    font-size: 1.125em;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    z-index: 20;
-    transition: all 0.3s ease-in-out;
+      text-align: center;
+      text-decoration: none;
+      width: 100%;
+      padding: 18px 25px;
+      color: #fff;
+      font-size: 1.125em;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      z-index: 20;
+      transition: all 0.3s ease-in-out;
    }
    
    .styleButtons:hover span {
-    color: #183153;
-    animation: scaleUp 0.3s ease-in-out;
+      color: #183153;
+      animation: scaleUp 0.3s ease-in-out;
    }
    
    @keyframes scaleUp {

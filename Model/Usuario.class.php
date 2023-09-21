@@ -6,9 +6,11 @@
         private $tel;
         private $sexo;
         private $nasc;
-        private $estado;
         private $email;
         private $senha;
+        private $saldo;
+        private $despesa;
+        private $receita;
 
         public function setCod($cod) {
             $this->cod = $cod;
@@ -30,6 +32,15 @@
         }
         public function setSenha($senha){
             $this->senha = $senha;
+        }
+        public function setSaldo($saldo){
+            $this->saldo = $saldo;
+        }
+        public function setDespesa($despesa){
+            $this->despesa = $despesa;
+        }
+        public function setReceita($receita){
+            $this->receita = $receita;
         }
 
 
@@ -55,6 +66,16 @@
         public function getSenha(){
             return $this->senha;
         }
+        public function getSaldo(){
+            return $this->saldo;
+        }
+        public function getDespesa(){
+            return $this->despesa;
+        }
+        public function getReceita(){
+            return $this->receita;
+        }
     }
 
+    
 ?>

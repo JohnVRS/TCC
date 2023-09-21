@@ -20,10 +20,38 @@
             }
         }
 
-        public function puxarDados($email) {
-            $sql = "INSERT INTO usuario(nome,tel,sexo,nasc,email,senha) 
-                        VALUES(:nome,:tel,:sexo,:nasc,:email,:senha)";
-            $p_sql = Connection::getInstance()->prepare($sql);
+        public function puxarDados($email ,$senha) {
+            $conn = Connection::getInstance();
+            $sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+            $stmt = $conn->prepare($sql);
+            
+            $stmt->bindParam(1, $email, PDO::PARAM_STR);
+            $stmt->bindParam(2, $senha, PDO::PARAM_STR);
+
+        
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC); // Use fetch em vez de fetchAll, pois esperamos apenas um resultado.
+
+            if ($result) {
+                // Criar e retornar um objeto Usuario com os dados encontrados
+                $usuario = new Usuario();
+                $usuario->setCod($result['cod']);
+                $usuario->setNome($result['nome']);
+                $usuario->setTele($result['tel']);
+                $usuario->setSexo($result['sexo']);
+                $usuario->setNasc($result['nasc']);
+                $usuario->setEmail($result['email']);
+                $usuario->setSenha($result['senha']);
+                $usuario->setSaldo($result['saldo']);
+                $usuario->setDespesa($result['despesa']);
+                $usuario->setReceita($result['receita']);
+
+                return $usuario;
+            } else {
+                echo "Nenhum usuário encontrado.";
+                return null;
+            }
+
         }
         
     }

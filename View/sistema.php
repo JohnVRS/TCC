@@ -1,7 +1,14 @@
 <?php 
+
     require_once("../Model/Usuario.class.php");
-    require_once("../Controller/UsuarioDAO.class.php");
+    require_once("../Model/Receita.class.php");
+    require_once("../Model/Despesa.class.php");
     require_once("../Model/Connection.class.php");
+    require_once("../Controller/UsuarioDAO.class.php");
+    require_once("../Controller/DespesaDAO.class.php");
+    require_once("../Controller/ReceitaDAO.class.php");
+    
+    
     session_start();
     
     if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true )){
@@ -9,13 +16,18 @@
         unset($_SESSION['senha']);
         header("Location: login.php");
     } else {
-        $usuario = new Usuario();
+        $email = $_SESSION['email'];
+        $senha = $_SESSION['senha'];
 
-        $logado = $usuario->getNome();
-    }
-    
-    
+        $logado = $email;
+        $dao = new UsuarioDAO;
+        $usuarioAtual = $dao->puxarDados($email,$senha);
+        
+        $name = $usuarioAtual->getNome();
+        $cod_usuarioAtual = $usuarioAtual->getCod();
 
+        $valorDespesa = 1000;    
+    };
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,8 +43,6 @@
     <link rel="stylesheet" href="../CSS/index/footer.css">
     <link rel="stylesheet" href="../CSS/index/logo.css">
     
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,700&display=swap" rel="stylesheet">
@@ -47,21 +57,20 @@
         <div id="logo">
             
         </div>
-        
         <div class="dashboard">
                 <div class="receita-desp">
 
                     <div class="congrats">
                             <p> <small style="font-size: 18px;color: rgb(82, 82, 82);">Boa tarde,</small><br>
-                                                    <?php echo"<u>$logado</u>" ?>
+                                                    <?php echo"$name!" ?>
                             </p>
-
                     </div>
+
                     <div class="container-rc">
                         <div class="valores">
                             <p>Despesas
                             </p>
-                            <p id="despesas-Global">R$ 0.00</p>
+                            <p id="despesas-Global">R$<?php echo number_format($valorDespesa, 2, ',', '.'); ?></p>
                         </div>
                         <div class="valores">
                             <p>Receitas
@@ -83,49 +92,53 @@
                 </div>
             
                     <dialog class="modal" id="modalDesp" > 
-                        <form action="">
+                        <form action="inserirDespesa.php" method="get">
                             <h2> Inserir despesa</h2>
                             <hr>
                             <div class="coolinput">
                                 <label for="input" class="text">Valor R$:</label>
-                                <input type="text" name="input" id="valorDesp" class="input">
+                                <input type="text" name="inputDespesa" id="valorDesp" class="input" required>
                             </div>
                             <div class="coolinput">
                                 <label for="desc" class="text">Descrição: </label>
-                                <input type="text" name="desc" id="descDesp" class="input">
+                                <input type="text" name="desc" id="descDesp" class="input" >
                             </div>
-                            <input type="date" name="date" id="dataDesp">
+                            <input type="date" name="dateDesp" id="dataDesp" required>
+                            <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual; ?>">
                             <br>
                             <br>
                             <div class="styleButtonsContainer">
-                                <button class="styleButtons" id="salvarD" ><span>SALVAR</span></button>
-                                <button class="styleButtons" id="btnClose_Desp" ><span>FECHAR</span></button>
+                                <button type="submit" name="saveDespesa" class="styleButtons" id="salvarD" ><span>SALVAR</span></button>
+                                <button type="button" class="styleButtons" id="btnClose_Desp" ><span>FECHAR</span></button>
                             </div>
                         </form>
-                        
                     </dialog>
                     
                     <dialog class="modal" id="modalRece" > 
-                        <h2> Inserir Receita</h2>
-                        <hr>
-                        <div class="coolinput">
-                            <label for="input" class="text">Valor R$:</label>
-                            <input type="text" name="input" id="valorRece" class="input">
-                        </div>
-                        <div class="coolinput">
-                            <label for="desc" class="text">Descrição: </label>
-                            <input type="text" name="desc" id="descRece" class="input">
-                        </div>
-                         <input type="date" name="date" id="dataRece">
-                        <br>
-                        <br>
-                        <div class="styleButtonsContainer">
-                            <button class="styleButtons" id="salvarR"><span>SALVAR</span></button>
-                            <button class="styleButtons" id="btnClose_Rece" ><span>FECHAR</span></button>
-                        </div>
+                        <form action="inserirReceita.php" method="get">
+                            <h2> Inserir Receita</h2>
+                            <hr>
+                            <div class="coolinput">
+                                <label for="input" class="text">Valor R$:</label>
+                                <input type="text" name="inputReceita" id="valorRece" class="input">
+                            </div>
+                            <div class="coolinput">
+                                <label for="desc" class="text">Descrição: </label>
+                                <input type="text" name="descRece" id="descRece" class="input">
+                            </div>
+                            <input type="date" name="dateRece" id="dataRece">
+                            <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual; ?>">
+                            <br>
+                            <br>
+                            <div class="styleButtonsContainer">
+                                <button type="submit" name="saveReceita" class="styleButtons" id="salvarR"><span>SALVAR</span></button>
+                                <button type="button" class="styleButtons" id="btnClose_Rece" ><span>FECHAR</span></button>
+                            </div>
+                        </form>
                     </dialog>
+
+                    <script src="../Controller/openModal.js"></script>
         </div>  
-        <script src="../Controller/openModal.js"></script>
     </div>
 
     </div>
@@ -140,7 +153,11 @@
 
             </div>
             <div class="Receitas">
-                
+            <table id="tabela_receitas">
+                    <tr> <th>Editar</th><th>Valor</th><th>Descrição</th><th>Data</th> </tr>
+                    
+                    
+                </table>
             </div>
     </div>
 

@@ -18,20 +18,21 @@ const valorDespInput = document.getElementById("valorDesp");
 const dataDesp = document.getElementById("dataDesp");
 const descDesp = document.getElementById("descDesp");
 
+
 btnDesp.addEventListener("click", function() {
     modalDesp.showModal();
 })
 btnClose_Desp.addEventListener("click", function() {
-    modalDesp.close()
+    modalDesp.close();
 })
 
 btnRece.addEventListener("click", function() {
     modalRece.showModal();
 })
 btnClose_Rece.addEventListener("click", function() {
-    modalRece.close()
+    modalRece.close();
 })
-
+/*
 let saldoGeral = 0;
 let receita = 0;
 let despesa = 0;
@@ -96,4 +97,4 @@ salvarD.addEventListener("click", function() {
     
 });
 
-
+*/

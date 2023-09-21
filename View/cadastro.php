@@ -70,8 +70,8 @@
 
                         $DAO = new UsuarioDAO();
                         $DAO->cadastrar($usuario);
+                        header("Location: login.php");
                     }
-                    header("Location: login.php");
                 ?>
         </form>
     </div>
