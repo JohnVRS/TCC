@@ -16,7 +16,24 @@
                     } catch(Exception $e) {
                         echo "Erro ao registrar Despesa:".$e->getMessage();
                     }
-                }
+        }
+        public function atualizarDespesa($usuario,$valor) {
+            try {
+                $valorAtual = $usuario->getDespesa();
+                $valorNovo = $valorAtual + $valor;
+
+                $sql = "UPDATE usuario SET despesa = :nova_despesa WHERE cod LIKE :cod_usuario";
+                $p_sql = Connection::getInstance()->prepare($sql);
+
+                $p_sql->bindValue(':nova_despesa',$valorNovo);
+                $p_sql->bindValue(':cod_usuario',$usuario->getCod());
+
+                return $p_sql->execute();
+            } catch(Exception $e) {
+                echo "Erro ao atualizar Despesa:".$e->getMessage();
+            }
+        }
+
     }
 
 ?> 

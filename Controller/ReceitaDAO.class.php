@@ -14,9 +14,27 @@
 
                         return $p_sql->execute();
                     } catch(Exception $e) {
-                        echo "Erro ao registrar Despesa:".$e->getMessage();
+                        echo "Erro ao registrar Receita:".$e->getMessage();
                     }
-                }
+        }
+        public function atualizarReceita($usuario,$valor) {
+            try {
+
+                $valorAtual = $usuario->getReceita();
+                $valorNovo = $valorAtual + $valor;
+
+                $sql = "UPDATE usuario SET receita = :nova_receita WHERE cod LIKE :cod_usuario";
+                $p_sql = Connection::getInstance()->prepare($sql);
+
+                $p_sql->bindValue(':nova_receita',$valorNovo);
+                $p_sql->bindValue(':cod_usuario',$usuario->getCod());
+
+                return $p_sql->execute();
+            } catch(Exception $e) {
+                echo "Erro ao atualizar Receita:".$e->getMessage();
+            }
+        }
+
     }
 
 ?> 

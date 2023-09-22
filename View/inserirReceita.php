@@ -8,21 +8,23 @@
     require_once("../Controller/ReceitaDAO.class.php");
 
     if (isset($_GET['saveReceita'])) {
-        
         $cod_usuario = $_GET['cod_usuario'];
-    
-       
+
+        $dao = new UsuarioDAO();
+        $usuarioAtual = $dao->puxarDadosByCOD($cod_usuario);
+        
         $valor = $_GET['inputReceita'];
         $descricao = $_GET['descRece'];
         $data = $_GET['dateRece'];
     
-      
         $receitaDAO = new ReceitaDAO();
         $receita = new Receita($cod_usuario, $valor, $descricao, $data);
-
         
         if ($receitaDAO->registrarReceita($receita)) {
-            
+
+            $receitaDAO->atualizarReceita($usuarioAtual,$valor);
+            $dao->atualizarSaldo($usuarioAtual,$usuarioAtual->getReceita(),$usuarioAtual->getDespesa());
+
             echo "Despesa registrada com sucesso!";
             header("Location: sistema.php");
             

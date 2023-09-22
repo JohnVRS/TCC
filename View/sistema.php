@@ -25,8 +25,10 @@
         
         $name = $usuarioAtual->getNome();
         $cod_usuarioAtual = $usuarioAtual->getCod();
-
-        $valorDespesa = 1000;    
+        $valorReceita = $usuarioAtual->getReceita();    
+        $valorDespesa = $usuarioAtual->getDespesa();
+        $valorSaldo = $usuarioAtual->getSaldo();
+        $dao->atualizarSaldo($usuarioAtual,$valorReceita,$valorDespesa);
     };
 ?>
 <!DOCTYPE html>
@@ -75,7 +77,7 @@
                         <div class="valores">
                             <p>Receitas
                             </p>
-                            <p id="receitas-Global">R$ 0.00</p>
+                            <p id="receitas-Global">R$<?php echo number_format($valorReceita, 2, ',', '.'); ?></p>
                         </div>
                     </div>
                     
@@ -83,7 +85,7 @@
                 
                 <div class="saldo">
                     <p>Saldo geral</p>
-                    <p id="saldo-Global">R$ 0.00</p> 
+                    <p id="saldo-Global">R$<?php echo number_format($valorSaldo, 2, ',', '.'); ?></p> 
                 </div>
 
                 <div class="buttons">   
@@ -104,7 +106,7 @@
                                 <input type="text" name="desc" id="descDesp" class="input" >
                             </div>
                             <input type="date" name="dateDesp" id="dataDesp" required>
-                            <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual; ?>">
+                            <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual;?>">
                             <br>
                             <br>
                             <div class="styleButtonsContainer">
@@ -127,7 +129,7 @@
                                 <input type="text" name="descRece" id="descRece" class="input">
                             </div>
                             <input type="date" name="dateRece" id="dataRece">
-                            <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual; ?>">
+                            <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual;?>">
                             <br>
                             <br>
                             <div class="styleButtonsContainer">
