@@ -139,13 +139,16 @@
                                 <input type="text" name="descRece" id="descRece" class="input">
                             </div>
                             <input type="date" name="dateRece" id="dataRece" required>
-                            <select name="categoriaRece" id="" required>
-                                    <option value="Outros">Selecione a categoria</option>
-                                    <option value="Salário">Salário</option>
-                                    <option value="Renda Extra">Renda Extra</option>
-                                    <option value="Retorno Investimentos">Retorno Investimentos</option>
-                                    <option value="Outros">Outro</option>
-                            </select>
+                            <div class="select" style="width:100%;">
+                                <select name="categoriaRece" id="" required>
+                                            <option value="Outros">Selecione a categoria</option>
+                                            <option value="Salário">Salário</option>
+                                            <option value="Renda Extra">Renda Extra</option>
+                                            <option value="Retorno Investimentos">Retorno Investimentos</option>
+                                            <option value="Outros">Outro</option>
+                                </select>
+                           </div>
+                            
         
                             <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual;?>">
                             <br>
@@ -175,7 +178,7 @@
                             
                             echo "<td id='buttonsEdit'>";
                             echo "<a href='editarDespesa.php?id={$l['cod']}'><img src='../src/editar.png' alt='Editar'></a>";
-                            echo "<a href='deletarDespesa.php?id={$l['cod']}'><img src='../src/lixeira.png' alt='Deletar'></a>";
+                            echo "<a href='deletarDespesa.php?id={$l['cod']}&cod={$cod_usuarioAtual}'><img src='../src/lixeira.png' alt='Deletar'></a>";
                             echo "</td>";
 
                             echo "<td>{$l['valor']}</td>";
@@ -200,8 +203,8 @@
                             echo "<tr>";
                             
                             echo "<td id='buttonsEdit'>";
-                            echo "<a href='editarDespesa.php?id={$l['cod']}'><img src='../src/editar.png' alt='Editar'></a>";
-                            echo "<a href='deletarDespesa.php?id={$l['cod']}'><img src='../src/lixeira.png' alt='Deletar'></a>";
+                            echo "<a href='editarReceita.php?id={$l['cod']}'><img src='../src/editar.png' alt='Editar'></a>";
+                            echo "<a href='deletarReceita.php?id={$l['cod']}'><img src='../src/lixeira.png' alt='Deletar'></a>";
                             echo "</td>";
 
                             echo "<td>{$l['valor']}</td>";

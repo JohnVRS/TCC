@@ -45,7 +45,7 @@
             return $this->categoria;
         }
 
-        public function __construct($cod_usuario, $valor, $descri, $data,$categoria) {
+        public function __construct($cod_usuario = null , $valor = null , $descri = null, $data = null,$categoria = null) {
             $this->cod_usuario = $cod_usuario;
             $this->valor = $valor;
             $this->descri = $descri;

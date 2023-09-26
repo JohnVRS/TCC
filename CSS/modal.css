@@ -160,8 +160,71 @@ dialog .styleButtonsContainer {
      transform: scale(1);
     }
    }
-
+/*
   dialog select {
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0);
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0);
+
+        border-radius: 10px;
+        border: 2px #bdbdbd9a solid;
+
+        
+        padding: 10px;
+        color: white;
+
   }
+
+  dialog select-selected {
+    background-color: DodgerBlue;
+  }
+
+  dialog select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  */
+
+    select {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        padding: 0 1em 0 0;
+        margin: 0;
+        width: 100%;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: inherit;
+        line-height: inherit;
+    }
+
+    select::-ms-expand {
+        display: none;
+      
+    }
+
+    select {
+        outline: none;
+    }
+
+    :root {
+        --select-border: #777;
+        --select-focus: rgb(51, 255, 0);
+        --select-arrow: var(--select-border);
+    }
+    .select {
+        width: 99.5%;
+        padding: 0.5%;
+        border: 1px solid #bdbdbd9a;
+        border-radius: 0.25em;
+        font-size: 1.25rem;
+        cursor: pointer;
+        line-height: 1.1;
+        background-color: #ffffff00;
+        background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+      }  
