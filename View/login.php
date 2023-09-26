@@ -21,6 +21,6 @@
                 <input type="submit" name="submit" class="buttonSubmit" value="Enviar">
             </form>
         </div>
-        
+        <div id="cadastro"><p>Não possui cadastro?<a href="cadastro.php"> cadastrar-se</a></p></div>
 </body>
 </html>

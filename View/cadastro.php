@@ -75,6 +75,6 @@
                 ?>
         </form>
     </div>
-
+    <div id="login"><p>Já possui login?<a href="Login.php"> Logar</a></p></div>
 </body>
 </html>

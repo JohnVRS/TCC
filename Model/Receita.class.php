@@ -5,6 +5,7 @@
         private $valor;
         private $descri;
         private $data;
+        private $categoria;
 
         public function setCod($cod) {
             $this->cod = $cod;
@@ -21,6 +22,9 @@
         public function setData($data) {
             $this->descri = $data;
         }
+        public function setCategoria($categoria) {
+            $this->data = $categoria;
+        }
 
         public function getCod(){
             return $this->cod;
@@ -36,13 +40,17 @@
         }
         public function getData(){
             return $this->data;
-        } 
+        }
+        public function getCategoria(){
+            return $this->categoria;
+        }
 
-        public function __construct($cod_usuario, $valor, $descri, $data) {
+        public function __construct($cod_usuario, $valor, $descri, $data, $categoria) {
             $this->cod_usuario = $cod_usuario;
             $this->valor = $valor;
             $this->descri = $descri;
             $this->data = $data;
+            $this->categoria = $categoria;
         }
     }
 ?>

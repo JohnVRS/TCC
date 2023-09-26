@@ -16,9 +16,10 @@
         $valor = $_GET['inputDespesa'];
         $descricao = $_GET['desc'];
         $data = $_GET['dateDesp'];
+        $categoria = $_GET['categoriaDesp'];
     
         $despesaDAO = new DespesaDAO();
-        $despesa = new Despesa($cod_usuario, $valor, $descricao, $data);
+        $despesa = new Despesa($cod_usuario, $valor, $descricao, $data,$categoria);
         
         if ($despesaDAO->registrarDespesa($despesa)) {
             

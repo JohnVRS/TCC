@@ -38,3 +38,20 @@ body {
 .tela-login .buttonSubmit:hover {
     background-color: rgba(0, 255, 157, 0.767);
 }
+
+#cadastro {
+    position: absolute;
+    top: 70%;
+    left: 43%;
+
+    color: white;
+    margin-top: 20px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.856);
+    padding: 3px 10px 3px 10px;
+}
+
+#cadastro a {
+    text-decoration: none;
+    color: green;
+}

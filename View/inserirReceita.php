@@ -16,20 +16,22 @@
         $valor = $_GET['inputReceita'];
         $descricao = $_GET['descRece'];
         $data = $_GET['dateRece'];
+        $categoria = $_GET['categoriaRece'];
     
         $receitaDAO = new ReceitaDAO();
-        $receita = new Receita($cod_usuario, $valor, $descricao, $data);
+        $receita = new Receita($cod_usuario, $valor, $descricao, $data,$categoria);
         
         if ($receitaDAO->registrarReceita($receita)) {
 
             $receitaDAO->atualizarReceita($usuarioAtual,$valor);
+            
             $dao->atualizarSaldo($usuarioAtual,$usuarioAtual->getReceita(),$usuarioAtual->getDespesa());
-
-            echo "Despesa registrada com sucesso!";
+            
+            echo "Receita registrada com sucesso!";
             header("Location: sistema.php");
             
         } else {
-            echo "Erro ao registrar despesa.";
+            echo "Erro ao registrar Receita.";
         }
     }
     

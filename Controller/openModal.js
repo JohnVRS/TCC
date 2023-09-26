@@ -32,6 +32,11 @@ btnRece.addEventListener("click", function() {
 btnClose_Rece.addEventListener("click", function() {
     modalRece.close();
 })
+
+// Coloque este código no seu arquivo JavaScript da página.
+
+// Função para atualizar o saldo na página.
+
 /*
 let saldoGeral = 0;
 let receita = 0;

@@ -54,7 +54,7 @@
 
 </head>
 <body>
-    <div id="auxiliar"> <a href="">Home</a> <a href="">Perfil</a> <a href="sair.php">Sair</a></div>
+    <div id="auxiliar"> <a href="sistema.php"><img src="../src/home.png" alt=""></a> <a href=""><img src="../src/profile.png" alt=""></a> <a href="sair.php"><img src="../src/sair.png" alt="Sair"></a></div>
     <div class="container">
         <div id="logo">
             
@@ -106,6 +106,16 @@
                                 <input type="text" name="desc" id="descDesp" class="input" >
                             </div>
                             <input type="date" name="dateDesp" id="dataDesp" required>
+                            <select name="categoriaDesp" id="" required>
+                                    <option value="Outros">Selecione a categoria</option>
+                                    <option value="Compras">Compras</option>
+                                    <option value="Comida">Comida</option>
+                                    <option value="Roupas">Roupas</option>
+                                    <option value="Viagem">Viagem</option>
+                                    <option value="Combustível">Combustível</option>
+                                    <option value="Emergência">Emergência</option>
+                                    <option value="Outros">Outro</option>
+                            </select>
                             <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual;?>">
                             <br>
                             <br>
@@ -122,13 +132,21 @@
                             <hr>
                             <div class="coolinput">
                                 <label for="input" class="text">Valor R$:</label>
-                                <input type="text" name="inputReceita" id="valorRece" class="input">
+                                <input type="text" name="inputReceita" id="valorRece" class="input" required>
                             </div>
                             <div class="coolinput">
                                 <label for="desc" class="text">Descrição: </label>
                                 <input type="text" name="descRece" id="descRece" class="input">
                             </div>
-                            <input type="date" name="dateRece" id="dataRece">
+                            <input type="date" name="dateRece" id="dataRece" required>
+                            <select name="categoriaRece" id="" required>
+                                    <option value="Outros">Selecione a categoria</option>
+                                    <option value="Salário">Salário</option>
+                                    <option value="Renda Extra">Renda Extra</option>
+                                    <option value="Retorno Investimentos">Retorno Investimentos</option>
+                                    <option value="Outros">Outro</option>
+                            </select>
+        
                             <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual;?>">
                             <br>
                             <br>
@@ -147,18 +165,52 @@
     <div class="Listas"> 
             <div class="Despesas">
                 <table id="tabela_despesas">
-                    <tr> <th>Editar</th><th>Valor</th><th>Descrição</th><th>Data</th> </tr>
-                    
-                    
+                    <tr> <th>Editar</th><th>Valor</th><th>Descrição</th><th>Data</th><th>Categoria</th> </tr>
+                    <?php
+
+                        $DespesaDAO = new DespesaDAO();
+                        $listaDespesa = $DespesaDAO->listarDespesa($cod_usuarioAtual);
+                        foreach($listaDespesa as $l) {
+                            echo "<tr>";
+                            
+                            echo "<td id='buttonsEdit'>";
+                            echo "<a href='editarDespesa.php?id={$l['cod']}'><img src='../src/editar.png' alt='Editar'></a>";
+                            echo "<a href='deletarDespesa.php?id={$l['cod']}'><img src='../src/lixeira.png' alt='Deletar'></a>";
+                            echo "</td>";
+
+                            echo "<td>{$l['valor']}</td>";
+                            echo "<td>{$l['descri']}</td>";
+                            echo "<td>{$l['data']}</td>";
+                            echo "<td>{$l['categoria']}</td>";
+                            echo "</tr>";
+                        };
+                        ?>
                 </table>
 
 
             </div>
             <div class="Receitas">
             <table id="tabela_receitas">
-                    <tr> <th>Editar</th><th>Valor</th><th>Descrição</th><th>Data</th> </tr>
-                    
-                    
+                    <tr> <th>Editar</th><th>Valor</th><th>Descrição</th><th>Data</th><th>Categoria</th> </tr>
+                    <?php
+
+                        $receitaDAO = new ReceitaDAO();
+                        $listaReceita = $receitaDAO->listarReceita($cod_usuarioAtual);
+                        foreach($listaReceita as $l) {
+                            echo "<tr>";
+                            
+                            echo "<td id='buttonsEdit'>";
+                            echo "<a href='editarDespesa.php?id={$l['cod']}'><img src='../src/editar.png' alt='Editar'></a>";
+                            echo "<a href='deletarDespesa.php?id={$l['cod']}'><img src='../src/lixeira.png' alt='Deletar'></a>";
+                            echo "</td>";
+
+                            echo "<td>{$l['valor']}</td>";
+                            echo "<td>{$l['descri']}</td>";
+                            echo "<td>{$l['data']}</td>";
+                            echo "<td>{$l['categoria']}</td>";
+                            echo "</tr>";
+                        };
+                        ?>
                 </table>
             </div>
     </div>
