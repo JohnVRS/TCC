@@ -1,7 +1,7 @@
 <?php 
     include_once("../Model/Connection.class.php");
-    include_once("../Model/Despesa.class.php");
-    include_once("../Controller/DespesaDAO.class.php");
+    include_once("../Model/Receita.class.php");
+    include_once("../Controller/ReceitaDAO.class.php");
     include_once("../Controller/UsuarioDAO.class.php");
     include_once("../Model/Usuario.class.php");
 
@@ -12,18 +12,20 @@
     $usuario = $userDao->puxarDadosByCOD($cod_usuarioAtual);
 
     
-    $TotDespesas = $usuario->getDespesa();
+    $TotReceita = $usuario->getReceita();
 
-    $daoDelete = new DespesaDAO();
-    $despesa = $daoDelete->puxarDadosByCOD($cod_deleted);
+    
 
-    $valorDespesa = $despesa->getValor();
+    $daoDelete = new ReceitaDAO();
+    $receita = $daoDelete->puxarDadosByCOD($cod_deleted);
+
+    $valorReceita = $receita->getValor();
 
     
     if($daoDelete->deletar($cod_deleted)){
 
         
-        $daoDelete->atualizarDespesa2($usuario,$valorDespesa);
+        $daoDelete->atualizarReceita2($usuario,$valorReceita);
 
         $daoDelete->deletar($cod_deleted);
         header("Location: login.php");

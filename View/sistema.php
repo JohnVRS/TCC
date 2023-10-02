@@ -106,16 +106,18 @@
                                 <input type="text" name="desc" id="descDesp" class="input" >
                             </div>
                             <input type="date" name="dateDesp" id="dataDesp" required>
-                            <select name="categoriaDesp" id="" required>
-                                    <option value="Outros">Selecione a categoria</option>
-                                    <option value="Compras">Compras</option>
-                                    <option value="Comida">Comida</option>
-                                    <option value="Roupas">Roupas</option>
-                                    <option value="Viagem">Viagem</option>
-                                    <option value="Combustível">Combustível</option>
-                                    <option value="Emergência">Emergência</option>
-                                    <option value="Outros">Outro</option>
-                            </select>
+                            <div class="select" style="width:100%;">
+                                <select name="categoriaDesp" id="" required>
+                                        <option value="Outros">Selecione a categoria</option>
+                                        <option value="Compras">Compras</option>
+                                        <option value="Comida">Comida</option>
+                                        <option value="Roupas">Roupas</option>
+                                        <option value="Viagem">Viagem</option>
+                                        <option value="Combustível">Combustível</option>
+                                        <option value="Emergência">Emergência</option>
+                                        <option value="Outros">Outro</option>
+                                </select>
+                            </div>
                             <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuarioAtual;?>">
                             <br>
                             <br>
@@ -204,7 +206,7 @@
                             
                             echo "<td id='buttonsEdit'>";
                             echo "<a href='editarReceita.php?id={$l['cod']}'><img src='../src/editar.png' alt='Editar'></a>";
-                            echo "<a href='deletarReceita.php?id={$l['cod']}'><img src='../src/lixeira.png' alt='Deletar'></a>";
+                            echo "<a href='deletarReceita.php?id={$l['cod']}&cod={$cod_usuarioAtual}'><img src='../src/lixeira.png' alt='Deletar'></a>";
                             echo "</td>";
 
                             echo "<td>{$l['valor']}</td>";
@@ -212,6 +214,8 @@
                             echo "<td>{$l['data']}</td>";
                             echo "<td>{$l['categoria']}</td>";
                             echo "</tr>";
+
+                           
                         };
                         ?>
                 </table>
