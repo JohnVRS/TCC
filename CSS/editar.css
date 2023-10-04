@@ -1,0 +1,250 @@
+:root {
+    background: rgb(25, 25, 26);
+    background: linear-gradient(90deg, rgb(29, 56, 24) 9%, rgb(8, 37, 25) 32%, rgb(68, 68, 67) 100%);
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.671);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+}
+a {
+    text-decoration: none;
+}
+
+hr {
+    border: 0px;
+    border-top: 2px dotted rgba(255, 255, 255, 0.575);
+}
+
+.container {
+    background-color: rgb(16, 18, 19);
+    width: 650px;
+    color: white;
+
+    border: none;
+    border-radius: 30px;
+    padding: 30px 40px 50px 40px;
+    box-shadow: 5px 5px 7px  rgba(0, 0, 0,0.9);
+    
+    
+    
+}
+
+.container h2 {
+    background-color: white;
+    color: #2e8b57;
+    text-align: center;
+    padding: 7px 0px 7px 0px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+}
+
+
+.container::backdrop {
+    background-color: rgba(0, 0, 0, 0.527);
+
+    
+}
+
+.coolinput {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: static;
+    width: 100%;
+
+    color: white;
+  }
+  
+  .coolinput label.text {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 700;
+    position: relative;
+    top: 0.5rem;
+    margin: 0 0 0 7px;
+    padding: 0 3px;
+    background: rgb(16, 18, 19);
+    width: fit-content;
+  }
+  
+  .coolinput input[type=text].input {
+    padding: 11px 10px;
+    font-size: 1.75rem;
+    border: 2px #bdbdbd9a solid;
+    border-radius: 5px;
+    background: rgb(16, 18, 19);
+
+    color: white;
+    
+  }
+  
+  .coolinput input[type=text].input:focus {
+    outline: none;
+    color: white;
+  }
+
+
+input[type="date"]{
+    background-color: #ffffff8e;
+    margin-top: 20px;
+    padding: 1%;
+    width: 98%;
+    font-family: "Roboto Mono",monospace;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: 15px 0px 15px 0px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.container .styleButtonsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.styleButtons {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: #183153;
+    font-family: "Montserrat", sans-serif;
+    box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: none;
+
+    
+   }
+   
+   .styleButtons:after {
+    content: " ";
+    width: 0%;
+    height: 100%;
+    background: #ffffff;
+    position: absolute;
+    transition: all 0.4s ease-in-out;
+    right: 0;
+   }
+   
+   .styleButtons:hover::after {
+      right: auto;
+      left: 0;
+      width: 100%;
+   }
+   
+   .styleButtons span {
+      text-align: center;
+      text-decoration: none;
+      width: 100%;
+      padding: 18px 25px;
+      color: #fff;
+      font-size: 1.125em;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      z-index: 20;
+      transition: all 0.3s ease-in-out;
+   }
+   
+   .styleButtons:hover span {
+      color: #183153;
+      animation: scaleUp 0.3s ease-in-out;
+   }
+   
+   @keyframes scaleUp {
+    0% {
+     transform: scale(1);
+    }
+   
+    50% {
+     transform: scale(0.95);
+    }
+   
+    100% {
+     transform: scale(1);
+    }
+   }
+/*
+  dialog select {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0);
+
+        border-radius: 10px;
+        border: 2px #bdbdbd9a solid;
+
+        
+        padding: 10px;
+        color: white;
+
+  }
+
+  dialog select-selected {
+    background-color: DodgerBlue;
+  }
+
+  dialog select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  */
+
+    select {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        padding: 0 1em 0 0;
+        margin: 0;
+        width: 100%;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: inherit;
+        line-height: inherit;
+    }
+
+    select::-ms-expand {
+        display: none;
+      
+    }
+
+    select {
+        outline: none;
+    }
+
+    :root {
+        --select-border: #777;
+        --select-focus: rgb(51, 255, 0);
+        --select-arrow: var(--select-border);
+    }
+    .select {
+        width: 99.5%;
+        padding: 0.5%;
+        border: 1px solid #bdbdbd9a;
+        border-radius: 0.25em;
+        font-size: 1.25rem;
+        cursor: pointer;
+        line-height: 1.1;
+        background-color: #ffffff00;
+        background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+      }  

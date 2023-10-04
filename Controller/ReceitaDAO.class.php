@@ -86,14 +86,38 @@
                 $p_sql = Connection::getInstance()->prepare($sql);
         
                 $p_sql->bindValue(':cod', $cod_usuario);
-                $p_sql->execute(); // Execute a consulta SQL
+                $p_sql->execute(); 
         
-                $listaReceita = $p_sql->fetchAll(PDO::FETCH_ASSOC); // Busque os resultados
+                $listaReceita = $p_sql->fetchAll(PDO::FETCH_ASSOC); 
                 return $listaReceita;
             } catch(Exception $e) {
                 echo "Erro ao Consultar receitas: " . $e->getMessage();
             }
         }
+        public function editar($receita){
+            try {
+                $sql = "UPDATE receita SET valor = :novo_valor, descri = :nova_descri, data = :nova_data, categoria = :nova_categoria WHERE cod = :cod";
+                $p_sql = Connection::getInstance()->prepare($sql);
+
+                $p_sql->bindValue(":novo_valor",$receita->getValor());
+                $p_sql->bindValue(":nova_descri",$receita->getDescri());
+                $p_sql->bindValue(":nova_data",$receita->getData());
+                $p_sql->bindValue(":nova_categoria",$receita->getCategoria());
+                $p_sql->bindValue(':cod', $receita->getCod());
+
+                if ($p_sql->execute()) {
+                    return true;
+                } else {
+                   
+                    var_dump($p_sql->errorInfo()); 
+                    return false;
+                }
+                
+            } catch(Exception $e) {
+                echo"Erro ao editar e atualizar Registro".$e->getMessage();
+            }
+        }
+
         public function deletar($cod_deleted){
             try{
                 $sql = "DELETE FROM receita WHERE cod = :cod ";

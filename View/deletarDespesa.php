@@ -26,7 +26,7 @@
         $daoDelete->atualizarDespesa2($usuario,$valorDespesa);
 
         $daoDelete->deletar($cod_deleted);
-        header("Location: login.php");
+        header("Location: sistema.php");
         
     } else {
         echo "Erro ao deletar registro.";

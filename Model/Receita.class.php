@@ -20,10 +20,10 @@
             $this->descri = $descri;
         }
         public function setData($data) {
-            $this->descri = $data;
+            $this->data = $data;
         }
         public function setCategoria($categoria) {
-            $this->data = $categoria;
+            $this->categoria = $categoria;
         }
 
         public function getCod(){

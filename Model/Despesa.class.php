@@ -23,7 +23,7 @@
             $this->data = $data;
         }
         public function setCategoria($categoria) {
-            $this->data = $categoria;
+            $this->categoria = $categoria;
         }
 
         public function getCod(){

@@ -40,7 +40,7 @@
 
                 return $despesa;
             } else {
-                echo "Nenhum usuário encontrado.";
+                echo "Nenhuma despesa encontradá.";
                 return null;
             }
         }
@@ -72,7 +72,7 @@
                 $p_sql->bindValue(':nova_despesa',$valorNovo);
                 $p_sql->bindValue(':cod_usuario',$usuario->getCod());
 
-                return $p_sql->execute();
+                
             } catch(Exception $e) {
                 echo "Erro ao atualizar Despesa:".$e->getMessage();
             }
@@ -86,14 +86,40 @@
                 $p_sql = Connection::getInstance()->prepare($sql);
         
                 $p_sql->bindValue(':cod', $cod_usuario);
-                $p_sql->execute(); // Execute a consulta SQL
+                $p_sql->execute(); 
         
-                $listaDespesa = $p_sql->fetchAll(PDO::FETCH_ASSOC); // Busque os resultados
+                $listaDespesa = $p_sql->fetchAll(PDO::FETCH_ASSOC);
                 return $listaDespesa;
             } catch(Exception $e) {
                 echo "Erro ao Consultar receitas: " . $e->getMessage();
             }
         }
+        public function editar($despesa){
+            try {
+                $sql = "UPDATE despesa SET valor = :novo_valor, descri = :nova_descri, data = :nova_data, categoria = :nova_categoria WHERE cod = :cod";
+                $p_sql = Connection::getInstance()->prepare($sql);
+
+                $p_sql->bindValue(":novo_valor",$despesa->getValor());
+                $p_sql->bindValue(":nova_descri",$despesa->getDescri());
+                $p_sql->bindValue(":nova_data",$despesa->getData());
+                $p_sql->bindValue(":nova_categoria",$despesa->getCategoria());
+                $p_sql->bindValue(':cod', $despesa->getCod());
+
+                if ($p_sql->execute()) {
+                    
+                    return true;
+                } else {
+                    
+                    var_dump($p_sql->errorInfo()); 
+                    return false;
+                }
+                
+            } catch(Exception $e) {
+                echo"Erro ao editar e atualizar Registro".$e->getMessage();
+            }
+        }
+
+
 
         public function deletar($cod_deleted){
             try{
