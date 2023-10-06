@@ -24,7 +24,7 @@
         if ($despesaDAO->registrarDespesa($despesa)) {
             
             $despesaDAO->atualizarDespesa($usuarioAtual,$valor);
-            $dao->atualizarSaldo($usuarioAtual,$usuarioAtual->getReceita(),$usuarioAtual->getDespesa());
+            
 
             echo "Despesa registrada com sucesso!";
             header("Location: sistema.php");

@@ -20,15 +20,24 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
     $senha = $_SESSION['senha'];
 
     $logado = $email;
+    
     $dao = new UsuarioDAO;
     $usuarioAtual = $dao->puxarDados($email, $senha);
-
     $name = $usuarioAtual->getNome();
     $cod_usuarioAtual = $usuarioAtual->getCod();
-    $valorReceita = $usuarioAtual->getReceita();
-    $valorDespesa = $usuarioAtual->getDespesa();
-    $valorSaldo = $usuarioAtual->getSaldo();
+
+
+    $receitaDAO = new ReceitaDAO();
+    $listaReceita = $receitaDAO->listarReceita($cod_usuarioAtual);
+    $valorReceita = $receitaDAO->atualizarReceitaLabel($cod_usuarioAtual,$listaReceita);
+
+    $despesaDAO = new DespesaDAO();
+    $listaDespesa = $despesaDAO->listarDespesa($cod_usuarioAtual);
+    $valorDespesa = $despesaDAO->atualizarDespesaLabel($cod_usuarioAtual,$listaDespesa);
+
     $dao->atualizarSaldo($usuarioAtual, $valorReceita, $valorDespesa);
+    $valorSaldo = $usuarioAtual->getSaldo();
+    
 };
 ?>
 <!DOCTYPE html>
@@ -180,9 +189,6 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                     <th>Categoria</th>
                 </tr>
                 <?php
-
-                $DespesaDAO = new DespesaDAO();
-                $listaDespesa = $DespesaDAO->listarDespesa($cod_usuarioAtual);
                 foreach ($listaDespesa as $l) {
                     echo "<tr>";
 
@@ -212,9 +218,6 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                     <th>Categoria</th>
                 </tr>
                 <?php
-
-                $receitaDAO = new ReceitaDAO();
-                $listaReceita = $receitaDAO->listarReceita($cod_usuarioAtual);
                 foreach ($listaReceita as $l) {
                     echo "<tr>";
 

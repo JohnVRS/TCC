@@ -80,6 +80,30 @@
                 echo "Erro ao atualizar Receita:".$e->getMessage();
             }
         }
+        public function atualizarReceitaLabel($cod,$lista) {
+            $total = 0;
+
+            foreach ($lista as $l){
+                $total += $l['valor'];
+            }
+
+
+            try {
+                $sql = "UPDATE usuario SET receita = :nova_receita WHERE cod LIKE :cod_usuario";
+                $p_sql = Connection::getInstance()->prepare($sql);
+
+                $p_sql->bindValue(':nova_receita',$total);
+                $p_sql->bindValue(':cod_usuario',$cod);
+                $p_sql->execute();
+
+                return $total;
+            }   catch (Exception $e) {
+                echo "Erro ao registra atualização de LABEL receita".$e->getMessage();
+            }
+
+
+        }
+
         public function listarReceita($cod_usuario) {
             try {
                 $sql = "SELECT * FROM receita WHERE cod_usuario LIKE :cod";

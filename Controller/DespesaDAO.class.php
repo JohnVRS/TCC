@@ -77,6 +77,29 @@
                 echo "Erro ao atualizar Despesa:".$e->getMessage();
             }
         }
+        public function atualizarDespesaLabel($cod,$lista) {
+            $total = 0;
+
+            foreach ($lista as $l){
+                $total += $l['valor'];
+            }
+
+
+            try {
+                $sql = "UPDATE usuario SET despesa = :nova_despesa WHERE cod LIKE :cod_usuario";
+                $p_sql = Connection::getInstance()->prepare($sql);
+
+                $p_sql->bindValue(':nova_despesa',$total);
+                $p_sql->bindValue(':cod_usuario',$cod);
+                $p_sql->execute();
+
+                return $total;
+            }   catch (Exception $e) {
+                echo "Erro ao registra atualização de LABEL despesa".$e->getMessage();
+            }
+
+
+        }
 
 
 
