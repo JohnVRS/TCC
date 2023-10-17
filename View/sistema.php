@@ -20,7 +20,7 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
     $senha = $_SESSION['senha'];
 
     $logado = $email;
-    
+
     $dao = new UsuarioDAO;
     $usuarioAtual = $dao->puxarDados($email, $senha);
     $name = $usuarioAtual->getNome();
@@ -29,15 +29,20 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
 
     $receitaDAO = new ReceitaDAO();
     $listaReceita = $receitaDAO->listarReceita($cod_usuarioAtual);
-    $valorReceita = $receitaDAO->atualizarReceitaLabel($cod_usuarioAtual,$listaReceita);
+    $valorReceita = $receitaDAO->atualizarReceitaLabel($cod_usuarioAtual, $listaReceita);
 
     $despesaDAO = new DespesaDAO();
     $listaDespesa = $despesaDAO->listarDespesa($cod_usuarioAtual);
-    $valorDespesa = $despesaDAO->atualizarDespesaLabel($cod_usuarioAtual,$listaDespesa);
+    $valorDespesa = $despesaDAO->atualizarDespesaLabel($cod_usuarioAtual, $listaDespesa);
 
     $dao->atualizarSaldo($usuarioAtual, $valorReceita, $valorDespesa);
     $valorSaldo = $usuarioAtual->getSaldo();
-    
+
+
+
+
+
+   
 };
 ?>
 <!DOCTYPE html>
@@ -62,14 +67,62 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 
+        <!-- Inclua a biblioteca do Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        // Defina as variáveis PHP
+        var valorReceita = <?php echo $valorReceita; ?>;
+        var valorDespesa = <?php echo $valorDespesa; ?>;
+        var totalSomaValores = valorReceita + valorDespesa;
+
+        // Crie um array de dados
+        var data = google.visualization.arrayToDataTable([
+          ['Categoria', 'Valor'],
+          ['Receita', valorReceita],
+          ['Despesa', valorDespesa]
+        ]);
+
+        var options = {
+          pieHole: 0.6,
+          pieSliceText: 'none',
+          legend: 'none',
+          backgroundColor: {
+            fill: '#242323',
+            stroke: "none",
+          },
+          slices: {
+            0: { color: 'green' },
+            1: { color: 'red' }
+          },
+          pieSliceBorderColor: 'transparent',
+          toooltip.ignoreBounds: true,
+          }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+
+        // Calcule as porcentagens
+        var percentReceita = (valorReceita / totalSomaValores) * 100;
+        var percentDespesa = (valorDespesa / totalSomaValores) * 100;
+
+        // Adicione os rótulos de porcentagem ao gráfico
+        //var percentReceitaLabel = 'Receita: ' + percentReceita.toFixed(2) + '%';
+        //var percentDespesaLabel = 'Despesa: ' + percentDespesa.toFixed(2) + '%';
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
 </head>
 
 <body>
     <div id="auxiliar"> <a href="sistema.php"><img src="../src/home.png" alt=""></a> <a href=""><img src="../src/profile.png" alt=""></a> <a href="sair.php"><img src="../src/sair.png" alt="Sair"></a></div>
     <div class="container">
-        <div id="logo">
-
-        </div>
         <div class="dashboard">
             <div class="receita-desp">
 
@@ -93,6 +146,7 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                 </div>
 
             </div>
+
 
             <div class="saldo">
                 <p>Saldo geral</p>
@@ -174,12 +228,23 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
             </dialog>
 
             <script src="../Controller/openModal.js"></script>
+
+
         </div>
+
+        <div id="grafico">
+            <div id="chart_div" style="width: 100%; height: 280px;"></div>
+        </div>
+
     </div>
+
 
     </div>
     <div class="Listas">
         <div class="Despesas">
+            <div class="inputSearch">
+                <input type="text" placeholder="Pesquisar"><button type="submit" class="btnSearch"> <img src="../src/procurar.png" alt=""></button>
+            </div>
             <table id="tabela_despesas">
                 <tr>
                     <th>Editar</th>
@@ -209,6 +274,9 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
 
         </div>
         <div class="Receitas">
+            <div class="inputSearch">
+                <input type="text" placeholder="Pesquisar"><button type="submit" class="btnSearch"> <img src="../src/procurar.png" alt=""></button>
+            </div>
             <table id="tabela_receitas">
                 <tr>
                     <th>Editar</th>

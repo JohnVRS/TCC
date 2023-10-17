@@ -6,8 +6,8 @@ body {
     margin: 0;
     padding: 0;
     
-    background: rgb(25, 25, 26);
-    background: linear-gradient(90deg, rgb(29, 56, 24) 9%, rgb(8, 37, 25) 32%, rgb(68, 68, 67) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgb(80, 102, 70) 9%, rgb(68, 139, 80) 32%, rgb(80, 102, 70) 100%);
     
 
     font-family: 'Nunito Sans', sans-serif;
@@ -19,17 +19,9 @@ body {
 button {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-}
 
-.container {
-    width: 1280px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+    background-color: #9e1f1f;
 }
-
 
 
 
@@ -38,7 +30,7 @@ footer {
 
     height: 10vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgb(243, 243, 243);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -46,4 +38,14 @@ footer {
     justify-content: center;
     color: white;
 }
+
+#grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 220px; /* Altura máxima da div pai */
+    overflow: hidden; /* Ocultar qualquer conteúdo que saia da altura máxima */
+    position: relative; /* Necessário para a rolagem */
+}
+
 
