@@ -37,12 +37,6 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
 
     $dao->atualizarSaldo($usuarioAtual, $valorReceita, $valorDespesa);
     $valorSaldo = $usuarioAtual->getSaldo();
-
-
-
-
-
-   
 };
 ?>
 <!DOCTYPE html>
@@ -67,54 +61,48 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 
-        <!-- Inclua a biblioteca do Google Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-        // Defina as variáveis PHP
-        var valorReceita = <?php echo $valorReceita; ?>;
-        var valorDespesa = <?php echo $valorDespesa; ?>;
-        var totalSomaValores = valorReceita + valorDespesa;
+        function drawChart() {
 
-        // Crie um array de dados
-        var data = google.visualization.arrayToDataTable([
-          ['Categoria', 'Valor'],
-          ['Receita', valorReceita],
-          ['Despesa', valorDespesa]
-        ]);
+            var valorReceita = <?php echo $valorReceita; ?>;
+            var valorDespesa = <?php echo $valorDespesa; ?>;
+            var totalSomaValores = valorReceita + valorDespesa;
 
-        var options = {
-          pieHole: 0.6,
-          pieSliceText: 'none',
-          legend: 'none',
-          backgroundColor: {
-            fill: '#242323',
-            stroke: "none",
-          },
-          slices: {
-            0: { color: 'green' },
-            1: { color: 'red' }
-          },
-          pieSliceBorderColor: 'transparent',
-          toooltip.ignoreBounds: true,
-          }
-        };
 
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            var data = google.visualization.arrayToDataTable([
+                ['Tipo', 'Valor'],
+                ['Receita', valorReceita],
+                ['Despesa', valorDespesa]
+            ]);
 
-        // Calcule as porcentagens
-        var percentReceita = (valorReceita / totalSomaValores) * 100;
-        var percentDespesa = (valorDespesa / totalSomaValores) * 100;
+            var options = {
+                pieHole: 0.6,
+                legend: "none",
+                pieSliceBorderColor: "transparent",
+                pieSliceText: "none",
+                backgroundColor: {
+                    fill: '#242323',
+                    stroke: "none",
+                },
+                slices: {
+                    0: {
+                        color: 'green'
+                    },
+                    1: {
+                        color: 'red'
+                    }
+                },
+            };
 
-        // Adicione os rótulos de porcentagem ao gráfico
-        //var percentReceitaLabel = 'Receita: ' + percentReceita.toFixed(2) + '%';
-        //var percentDespesaLabel = 'Despesa: ' + percentDespesa.toFixed(2) + '%';
-
-        chart.draw(data, options);
-      }
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
     </script>
 
 

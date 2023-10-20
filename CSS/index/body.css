@@ -39,13 +39,3 @@ footer {
     color: white;
 }
 
-#grafico {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-height: 220px; /* Altura máxima da div pai */
-    overflow: hidden; /* Ocultar qualquer conteúdo que saia da altura máxima */
-    position: relative; /* Necessário para a rolagem */
-}
-
-
