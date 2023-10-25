@@ -1,0 +1,28 @@
+.div_charts {
+    display: flex;
+    width: 1280px;
+    gap: 20px;
+}
+
+.chart {
+    height: 230px;
+    background-color: rgb(36, 35, 35); 
+    box-shadow: 3px 3px 5px  rgba(0, 0, 0,0.7);
+    padding: 20px;
+    border-radius: 7px;
+    margin-top: 20px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chart_desp {
+    width: 60%;
+    overflow: hidden; /* Ocultar qualquer conteúdo que saia da altura máxima */
+    position: relative; /* Necessário para a rolagem */
+}
+#chart_rece {
+    width: 40%;
+}

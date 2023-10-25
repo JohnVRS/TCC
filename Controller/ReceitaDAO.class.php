@@ -118,6 +118,25 @@
                 echo "Erro ao Consultar receitas: " . $e->getMessage();
             }
         }
+        
+        public function listarMes($cod_usuario,$dataInicio,$dataFim) {
+            try {
+                $sql = "SELECT * FROM receita WHERE cod_usuario = :cod and data BETWEEN :data_inicio AND :data_fim";
+                $p_sql = Connection::getInstance()->prepare($sql);
+        
+                $p_sql->bindValue(':cod', $cod_usuario);
+                $p_sql->bindValue(':data_inicio', $dataInicio);
+                $p_sql->bindValue(':data_fim', $dataFim);
+                $p_sql->execute(); 
+        
+                $listaMes = $p_sql->fetchAll(PDO::FETCH_ASSOC);
+                return $listaMes;
+            } catch(Exception $e) {
+                echo "Erro ao Consultar receitas por mes: " . $e->getMessage();
+            }
+        }
+
+        
         public function editar($receita){
             try {
                 $sql = "UPDATE receita SET valor = :novo_valor, descri = :nova_descri, data = :nova_data, categoria = :nova_categoria WHERE cod = :cod";

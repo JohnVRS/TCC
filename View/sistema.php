@@ -53,6 +53,7 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
     <link rel="stylesheet" href="../CSS/index/table.css">
     <link rel="stylesheet" href="../CSS/index/footer.css">
     <link rel="stylesheet" href="../CSS/index/logo.css">
+    <link rel="stylesheet" href="../CSS/index/graficos.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,11 +101,134 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                 },
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            var chart = new google.visualization.PieChart(document.getElementById('chart_main'));
             chart.draw(data, options);
         }
     </script>
+    <?php
+    $Compras = 0;
+    $Comida = 0;
+    $Roupas = 0;
+    $Viagem = 0;
+    $Combustivel = 0;
+    $Emergencia = 0;
+    $Outros = 0;
 
+    foreach ($listaDespesa as $ld) {
+        if ($ld["categoria"] === "Compras") {
+            $Compras += 1;
+        } elseif ($ld["categoria"] === "Comida") {
+            $Comida += 1;
+        } elseif ($ld["categoria"] === "Roupas") {
+            $Roupas += 1;
+        } elseif ($ld["categoria"] === "Viagem") {
+            $Viagem += 1;
+        } elseif ($ld["categoria"] === "Combustível") {
+            $Combustivel += 1;
+        } elseif ($ld["categoria"] === "Emergência") {
+            $Emergencia += 1;
+        } elseif ($ld["categoria"] === "Outros") {
+            $Outros += 1;
+        }
+    }
+
+    ?>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+
+
+        function drawChart() {
+            var compras = <?php echo $Compras; ?>;
+            var comida = <?php echo $Comida; ?>;
+            var roupas = <?php echo $Roupas; ?>;
+            var viagem = <?php echo $Viagem; ?>;
+            var combustivel = <?php echo $Combustivel; ?>;
+            var emergencia = <?php echo $Emergencia; ?>;
+            var outros = <?php echo $Outros; ?>;
+
+            var data = google.visualization.arrayToDataTable([
+                ['Categoria', 'Quantidade'],
+                ['Compras', compras],
+                ['Comida', comida],
+                ['Roupas', roupas],
+                ['Viagem', viagem],
+                ['Combustível', combustivel],
+                ['Emergência', emergencia],
+                ['Outros', outros]
+            ]);
+
+            var options = {
+                title: 'Despesas por Categoria',
+                legend: 'none',
+                backgroundColor: {
+                    fill: '#FFFFFF'
+                }
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_despesa'));
+
+            chart.draw(data, options);
+        }
+    </script>
+    <?php
+    $Salario = 0;
+    $RendaExtra = 0;
+    $Outros = 0;
+    $Retorno = 0;
+
+
+    foreach ($listaReceita as $lR) {
+        if ($lR["categoria"] === "Salário") {
+            $Salario += 1;
+        } elseif ($lR["categoria"] === "Renda Extra") {
+            $RendaExtra += 1;
+        } elseif ($lR["categoria"] === "Retorno Investimentos") {
+            $Retorno += 1;
+        } elseif ($lR["categoria"] === "Outros") {
+            $Outros += 1;
+        }
+    }
+
+    ?>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var salario = <?php echo $Salario; ?>;
+            var rendaExtra = <?php echo $RendaExtra; ?>;
+            var outros = <?php echo $Outros; ?>;
+            var retorno = <?php echo $Retorno; ?>;
+
+            var data = google.visualization.arrayToDataTable([
+                ['Categoria', 'Valor', {
+                    role: "style"
+                }],
+                ['Salário', salario, "#00a757"],
+                ['Renda Extra', rendaExtra, "#00a957"],
+                ['Outros', outros, "#00a97b"],
+                ['Retorno de Investimentos', retorno, "#00cc7b"]
+            ]);
+
+            var options = {
+                title: 'Receita por Categoria',
+                legend: 'none',
+                backgroundColor: {
+                    fill: '#FFFFFF'
+                }
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_receita'));
+
+            chart.draw(data, options);
+        }
+    </script>
 
 </head>
 
@@ -221,7 +345,7 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
         </div>
 
         <div id="grafico">
-            <div id="chart_div" style="width: 100%; height: 280px;"></div>
+            <div id="chart_main" style="width: 100%; height: 280px;"></div>
         </div>
 
     </div>
@@ -231,8 +355,26 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
     <div class="Listas">
         <div class="Despesas">
             <div class="inputSearch">
-                <input type="text" placeholder="Pesquisar"><button type="submit" class="btnSearch"> <img src="../src/procurar.png" alt=""></button>
+                <form method="GET" action="">
+                    <select name="mesDesp">
+                        <option value="">Selecione o Mês</option>
+                        <option value="01">Janeiro</option>
+                        <option value="02">Fevereiro</option>
+                        <option value="03">Março</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Maio</option>
+                        <option value="06">Junho</option>
+                        <option value="07">Julho</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                    <button type="submit" class="btnSearch"> <img src="../src/procurar.png" alt=""></button>
+                </form>
             </div>
+
             <table id="tabela_despesas">
                 <tr>
                     <th>Editar</th>
@@ -242,7 +384,20 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                     <th>Categoria</th>
                 </tr>
                 <?php
-                foreach ($listaDespesa as $l) {
+
+                if (isset($_GET["mesDesp"]) && !empty($_GET["mesDesp"])) {
+                    $mesSelecionado = $_GET["mesDesp"];
+                    $ano = date("Y");
+                    $dataInicio = $ano . "-" . $mesSelecionado . "-01";
+                    $dataFim = $ano . "-" . $mesSelecionado . "-31";
+
+                    $listaMes = $despesaDAO->listarMes($cod_usuarioAtual, $dataInicio, $dataFim);
+                } else {
+
+                    $listaMes = $despesaDAO->listarDespesa($cod_usuarioAtual);
+                }
+
+                foreach ($listaMes as $l) {
                     echo "<tr>";
 
                     echo "<td id='buttonsEdit'>";
@@ -263,7 +418,30 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
         </div>
         <div class="Receitas">
             <div class="inputSearch">
-                <input type="text" placeholder="Pesquisar"><button type="submit" class="btnSearch"> <img src="../src/procurar.png" alt=""></button>
+
+                <div class="wrapper">
+
+                <form method="GET" action="">
+                    <select name="mesRece">
+                        <option value="" disabled>Selecione o Mês</option>
+                        <option value="01">Janeiro</option>
+                        <option value="02">Fevereiro</option>
+                        <option value="03">Março</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Maio</option>
+                        <option value="06">Junho</option>
+                        <option value="07">Julho</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                    <button type="submit" class="btnSearch"> <img src="../src/procurar.png" alt=""></button>
+                </form>
+
+            </div>
+            
             </div>
             <table id="tabela_receitas">
                 <tr>
@@ -274,6 +452,39 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                     <th>Categoria</th>
                 </tr>
                 <?php
+
+
+                if (isset($_GET["mesRece"]) && !empty($_GET["mesRece"])) {
+                    $mesSelecionado = $_GET["mesRece"];
+                    $ano = date("Y");
+                    $dataInicio = $ano . "-" . $mesSelecionado . "-01";
+                    $dataFim = $ano . "-" . $mesSelecionado . "-31";
+
+                    $listaMes = $receitaDAO->listarMes($cod_usuarioAtual, $dataInicio, $dataFim);
+                } else {
+
+                    $listaMes = $receitaDAO->listarReceita($cod_usuarioAtual);
+                }
+
+                foreach ($listaMes as $l) {
+                    echo "<tr>";
+
+                    echo "<td id='buttonsEdit'>";
+                    echo "<a href='editarDespesa.php?codDesp={$l['cod']}&cod_usuario{$cod_usuarioAtual}'><img src='../src/editar.png' alt='Editar'></a>";
+                    echo "<a href='deletarDespesa.php?id={$l['cod']}&cod={$cod_usuarioAtual}'><img src='../src/lixeira.png' alt='Deletar'></a>";
+                    echo "</td>";
+
+                    echo "<td>{$l['valor']}</td>";
+                    echo "<td>{$l['descri']}</td>";
+                    echo "<td>{$l['data']}</td>";
+                    echo "<td>{$l['categoria']}</td>";
+                    echo "</tr>";
+                };
+
+
+
+
+                /*
                 foreach ($listaReceita as $l) {
                     echo "<tr>";
 
@@ -288,11 +499,20 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                     echo "<td>{$l['categoria']}</td>";
                     echo "</tr>";
                 };
+
+                */
                 ?>
             </table>
         </div>
     </div>
-
+    <div class="div_charts">
+        <div class="chart" id="chart_desp">
+            <div id="chart_despesa" style="width: 100%; height: 270px;"></div>
+        </div>
+        <div class="chart" id="chart_rece">
+            <div id="chart_receita" style="width: 100%; height: 230px;"></div>
+        </div>
+    </div>
     <footer>
         Feito por: João Vitor Rodrigues Santos
     </footer>
