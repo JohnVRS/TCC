@@ -239,9 +239,27 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
             <div class="receita-desp">
 
                 <div class="congrats">
-                    <p> <small style="font-size: 18px;color: rgb(82, 82, 82);">Boa tarde,</small><br>
+                    <p> <small style="font-size: 18px;color: rgb(82, 82, 82);" class="saudacao">Boa tarde,</small><br>
                         <?php echo "$name!" ?>
                     </p>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            var saudacao = document.querySelector('.saudacao');
+                            var data = new Date();
+                            var hora = data.getHours();
+
+                            if (hora >= 6 && hora < 12) {
+                                saudacao.textContent = "  Bom dia";
+                            } else if (hora >= 12 && hora < 18) {
+                                saudacao.textContent = "  Boa tarde";
+                            } else {
+                                saudacao.textContent = "  Boa noite";
+                            }
+                        });
+                    </script>
+
+
                 </div>
 
                 <div class="container-rc">
@@ -421,27 +439,27 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
 
                 <div class="wrapper">
 
-                <form method="GET" action="">
-                    <select name="mesRece">
-                        <option value="" disabled>Selecione o Mês</option>
-                        <option value="01">Janeiro</option>
-                        <option value="02">Fevereiro</option>
-                        <option value="03">Março</option>
-                        <option value="04">Abril</option>
-                        <option value="05">Maio</option>
-                        <option value="06">Junho</option>
-                        <option value="07">Julho</option>
-                        <option value="08">Agosto</option>
-                        <option value="09">Setembro</option>
-                        <option value="10">Outubro</option>
-                        <option value="11">Novembro</option>
-                        <option value="12">Dezembro</option>
-                    </select>
-                    <button type="submit" class="btnSearch"> <img src="../src/procurar.png" alt=""></button>
-                </form>
+                    <form method="GET" action="">
+                        <select name="mesRece">
+                            <option value="" disabled>Selecione o Mês</option>
+                            <option value="01">Janeiro</option>
+                            <option value="02">Fevereiro</option>
+                            <option value="03">Março</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Maio</option>
+                            <option value="06">Junho</option>
+                            <option value="07">Julho</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Setembro</option>
+                            <option value="10">Outubro</option>
+                            <option value="11">Novembro</option>
+                            <option value="12">Dezembro</option>
+                        </select>
+                        <button type="submit" class="btnSearch"> <img src="../src/procurar.png" alt=""></button>
+                    </form>
 
-            </div>
-            
+                </div>
+
             </div>
             <table id="tabela_receitas">
                 <tr>
@@ -482,32 +500,13 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                 };
 
 
-
-
-                /*
-                foreach ($listaReceita as $l) {
-                    echo "<tr>";
-
-                    echo "<td id='buttonsEdit'>";
-                    echo "<a href='editarReceita.php?codRece={$l['cod']}&cod_usuario={$cod_usuarioAtual}'><img src='../src/editar.png' alt='Editar'></a>";
-                    echo "<a href='deletarReceita.php?id={$l['cod']}&cod={$cod_usuarioAtual}'><img src='../src/lixeira.png' alt='Deletar'></a>";
-                    echo "</td>";
-
-                    echo "<td>{$l['valor']}</td>";
-                    echo "<td>{$l['descri']}</td>";
-                    echo "<td>{$l['data']}</td>";
-                    echo "<td>{$l['categoria']}</td>";
-                    echo "</tr>";
-                };
-
-                */
                 ?>
             </table>
         </div>
     </div>
     <div class="div_charts">
         <div class="chart" id="chart_desp">
-            <div id="chart_despesa" style="width: 100%; height: 270px;"></div>
+            <div id="chart_despesa" style="width: 100%; height: 230px;"></div>
         </div>
         <div class="chart" id="chart_rece">
             <div id="chart_receita" style="width: 100%; height: 230px;"></div>
