@@ -441,7 +441,7 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
 
                     <form method="GET" action="">
                         <select name="mesRece">
-                            <option value="" disabled>Selecione o Mês</option>
+                            <option value="">Selecione o Mês</option>
                             <option value="01">Janeiro</option>
                             <option value="02">Fevereiro</option>
                             <option value="03">Março</option>
@@ -488,8 +488,8 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                     echo "<tr>";
 
                     echo "<td id='buttonsEdit'>";
-                    echo "<a href='editarDespesa.php?codDesp={$l['cod']}&cod_usuario{$cod_usuarioAtual}'><img src='../src/editar.png' alt='Editar'></a>";
-                    echo "<a href='deletarDespesa.php?id={$l['cod']}&cod={$cod_usuarioAtual}'><img src='../src/lixeira.png' alt='Deletar'></a>";
+                    echo "<a href='editarReceita.php?codDesp={$l['cod']}&cod_usuario{$cod_usuarioAtual}'><img src='../src/editar.png' alt='Editar'></a>";
+                    echo "<a href='deletarReceita.php?id={$l['cod']}&cod={$cod_usuarioAtual}'><img src='../src/lixeira.png' alt='Deletar'></a>";
                     echo "</td>";
 
                     echo "<td>{$l['valor']}</td>";
