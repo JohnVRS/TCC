@@ -392,7 +392,7 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                     <button type="submit" class="btnSearch"> <img src="../src/procurar.png" alt=""></button>
                 </form>
             </div>
-
+                        
             <table id="tabela_despesas">
                 <tr>
                     <th>Editar</th>
@@ -435,9 +435,10 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
 
         </div>
         <div class="Receitas">
+            <div class="wrapper">
             <div class="inputSearch">
 
-                <div class="wrapper">
+                
 
                     <form method="GET" action="">
                         <select name="mesRece">

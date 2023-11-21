@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     
-    background: rgb(255, 255, 255);
+    background: #FFF;
     background: linear-gradient(90deg, rgb(80, 102, 70) 9%, rgb(68, 139, 80) 32%, rgb(80, 102, 70) 100%);
     
 
@@ -14,6 +14,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    overflow: overlay;
 }
 
 button {
@@ -43,9 +45,26 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-height: 220px; /* Altura máxima da div pai */
-    overflow: hidden; /* Ocultar qualquer conteúdo que saia da altura máxima */
-    position: relative; /* Necessário para a rolagem */
+    max-height: 220px; 
+    overflow: hidden; 
+    position: relative; 
 }
 
+body { overflow-x: hidden; 
+
+}
+
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: rgb(43, 43, 43);     /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(17, 17, 17);    /* color of the scroll thumb */
+    
+    border: 3px solid rgb(43, 43, 43);  /* creates padding around scroll thumb */
+  }
 
