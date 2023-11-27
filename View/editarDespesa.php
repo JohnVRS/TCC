@@ -56,41 +56,40 @@ if (isset($_GET['codDesp']) && is_numeric($_GET['codDesp'])) {
 </head>
 
 <body>
-    <div class="container">
-        <form action="" method="POST">
-            <h2> Editar despesa</h2>
-            <hr>
-            <div class="coolinput">
-                <label for="input" class="text">Valor R$:</label>
-                <input type="text" name="valor" id="valorDesp" class="input" required>
-            </div>
-            <div class="coolinput">
-                <label for="desc" class="text">Descrição: </label>
-                <input type="text" name="desc" id="descDesp" class="input">
-            </div>
-            <input type="date" name="date" id="dataDesp" required>
-            <div class="select" style="width:100%;">
-                <select name="categoria" id="" required>
-                    <option value="Outros">Selecione a categoria</option>
-                    <option value="Compras">Compras</option>
-                    <option value="Comida">Comida</option>
-                    <option value="Roupas">Roupas</option>
-                    <option value="Viagem">Viagem</option>
-                    <option value="Combustível">Combustível</option>
-                    <option value="Emergência">Emergência</option>
-                    <option value="Outros">Outro</option>
-                </select>
-            </div>
-            <br>
-            <br>
-            <div class="styleButtonsContainer">
-                <button type="submit" name="editDespesa" class="styleButtons" id="salvarD"><span>SALVAR</span></button>
-                <a href="../View/sistema.php" type="button" class="styleButtons" id="btnClose_Desp"><span>VOLTAR</span></a>
-            </div>
-        </form>
+<div class="container">
+    <form action="" method="POST">
+        <h2> Editar despesa</h2>
+        <hr>
+        <div class="coolinput">
+            <label for="input" class="text">Valor R$:</label>
+            <input type="text" name="valor" id="valorDesp" class="input" required value="<?php echo htmlspecialchars($despesa->getValor()); ?>">
+        </div>
+        <div class="coolinput">
+            <label for="desc" class="text">Descrição: </label>
+            <input type="text" name="desc" id="descDesp" class="input" value="<?php echo htmlspecialchars($despesa->getDescri()); ?>">
+        </div>
+        <input type="date" name="date" id="dataDesp" required value="<?php echo htmlspecialchars($despesa->getData()); ?>">
+        <div class="select" style="width:100%;">
+            <select name="categoria" id="" required>
+                <option value="Outros">Selecione a categoria</option>
+                <option value="Compras" <?php if ($despesa->getCategoria() === "Compras") echo "selected"; ?>>Compras</option>
+                <option value="Comida" <?php if ($despesa->getCategoria() === "Comida") echo "selected"; ?>>Comida</option>
+                <option value="Roupas" <?php if ($despesa->getCategoria() === "Roupas") echo "selected"; ?>>Roupas</option>
+                <option value="Viagem" <?php if ($despesa->getCategoria() === "Viagem") echo "selected"; ?>>Viagem</option>
+                <option value="Combustível" <?php if ($despesa->getCategoria() === "Combustível") echo "selected"; ?>>Combustível</option>
+                <option value="Emergência" <?php if ($despesa->getCategoria() === "Emergência") echo "selected"; ?>>Emergência</option>
+                <option value="Outros" <?php if ($despesa->getCategoria() === "Outros") echo "selected"; ?>>Outro</option>
+            </select>
+        </div>
+        <br>
+        <br>
+        <div class="styleButtonsContainer">
+            <button type="submit" name="editDespesa" class="styleButtons" id="salvarD"><span>SALVAR</span></button>
+            <a href="../View/sistema.php" type="button" class="styleButtons" id="btnClose_Desp"><span>VOLTAR</span></a>
+        </div>
+    </form>
+</div>
 
-
-    </div>
 
 
 </body>

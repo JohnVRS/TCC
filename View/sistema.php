@@ -489,7 +489,7 @@ if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true
                     echo "<tr>";
 
                     echo "<td id='buttonsEdit'>";
-                    echo "<a href='editarReceita.php?codDesp={$l['cod']}&cod_usuario{$cod_usuarioAtual}'><img src='../src/editar.png' alt='Editar'></a>";
+                    echo "<a href='editarReceita.php?codRece={$l['cod']}&cod_usuario{$cod_usuarioAtual}'><img src='../src/editar.png' alt='Editar'></a>";
                     echo "<a href='deletarReceita.php?id={$l['cod']}&cod={$cod_usuarioAtual}'><img src='../src/lixeira.png' alt='Deletar'></a>";
                     echo "</td>";
 

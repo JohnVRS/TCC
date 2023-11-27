@@ -23,7 +23,7 @@ if (isset($_GET['codRece']) && is_numeric($_GET['codRece'])) {
             $date = $_POST['date'];
             $categoria = $_POST['categoria'];
 
-
+            
 
 
             $receita->setValor($valor);
@@ -57,28 +57,25 @@ if (isset($_GET['codRece']) && is_numeric($_GET['codRece'])) {
 
 <body>
     <div class="container">
-        <form action="" method="POST">
+         <form action="" method="POST">
             <h2> Editar receita</h2>
             <hr>
             <div class="coolinput">
                 <label for="input" class="text">Valor R$:</label>
-                <input type="text" name="valor" id="valorDesp" class="input" required>
+                <input type="text" name="valor" id="valorDesp" class="input" required value="<?php echo htmlspecialchars($receita->getValor()); ?>">
             </div>
             <div class="coolinput">
                 <label for="desc" class="text">Descrição: </label>
-                <input type="text" name="desc" id="descDesp" class="input">
+                <input type="text" name="desc" id="descDesp" class="input" value="<?php echo htmlspecialchars($receita->getDescri()); ?>">
             </div>
-            <input type="date" name="date" id="dataDesp" required>
+            <input type="date" name="date" id="dataDesp" required value="<?php echo htmlspecialchars($receita->getData()); ?>">
             <div class="select" style="width:100%;">
                 <select name="categoria" id="" required>
                     <option value="Outros">Selecione a categoria</option>
-                    <option value="Compras">Compras</option>
-                    <option value="Comida">Comida</option>
-                    <option value="Roupas">Roupas</option>
-                    <option value="Viagem">Viagem</option>
-                    <option value="Combustível">Combustível</option>
-                    <option value="Emergência">Emergência</option>
-                    <option value="Outros">Outro</option>
+                    <option value="Salário" <?php if ($receita->getCategoria() === "Salário") echo "selected"; ?>>Salário</option>
+                    <option value="Renda Extra" <?php if ($receita->getCategoria() === "Renda Extra") echo "selected"; ?>>Renda Extra</option>
+                    <option value="Retorno Investimentos" <?php if ($receita->getCategoria() === "Retorno Investimentos") echo "selected"; ?>>Retorno Investimentos</option>
+                    <option value="Outros" <?php if ($receita->getCategoria() === "Outros") echo "selected"; ?>>Outro</option>
                 </select>
             </div>
             <br>
@@ -88,8 +85,6 @@ if (isset($_GET['codRece']) && is_numeric($_GET['codRece'])) {
                 <a href="../View/sistema.php" type="button" class="styleButtons" id="btnClose_Desp"><span>VOLTAR</span></a>
             </div>
         </form>
-
-
     </div>
 
 
